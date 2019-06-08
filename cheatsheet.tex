@@ -1,0 +1,411 @@
+\documentclass[final,hyperref={pdfpagelabels=false}]{beamer}
+\mode<presentation>
+{
+	%  \usetheme{Berlin}
+	%\usetheme{Dreuw}
+}
+\usepackage{times}
+\usepackage{amsmath,amsthm, amssymb, latexsym}
+%\boldmath
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[orientation=portrait,size=a4,scale=0.3]{beamerposter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+\graphicspath{{figures/}}
+%\title{}
+%\author[]{Teo}
+%\institute{Inf}
+%\date{}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+\begin{document}
+\begin{frame}{} 
+	\begin{columns}[t]
+		\begin{column}{.33\linewidth}
+			\begin{block}{}
+				\center\normalsize Kombinatorikk\\
+				{\footnotesize\raggedright
+					\textbf{Multiplikasjonsregelen}\\
+					Forsøk i $k$ etapper, med $m_1,m_2 \cdots,m_k$ mulige utfall i etappene. Totalt antall utfall: $\prod_{i=1}^k m_i$\\
+					\textbf{Potensregelen}\\
+					$n$ merka enheter, velger $k$ med tilbakelegging. Antall ordna utfall: $n^k$\\
+					\textbf{Permutasjonsregelen (nPr)}\\
+					$n$ merka enheter, velger $k$ uten tilbakelegging, antall ordna utfall: $_nP_r=\frac{n!}{(n-k)!}$\\
+					\textbf{Kombinasjonsregelen}\\
+					$n$ merka enheter, velger $k$ uten tilbakelegging, antall ikke-ordna utfall: $_nC_r=\binom{n}{k}=\frac{n!}{(n-k)!k!}$
+				}
+			\center\normalsize Sannsynlighetsregler\\
+				{\footnotesize\raggedright
+					\textbf{Addisjonsregelen}: $P(A\cup B)=P(A)+P(B)-P(A \cap B)$\\
+					\textbf{Multiplikasjonsregelen}: $P(A\cap B)=P(A)\cdot P(B|A)=P(B)\cdot P(A|B)$\\
+					\textbf{Betinga sannsynlighet}: $P(A|B)=\frac{P(A\cap B)}{P(B)}$\\
+					\textbf{Total sannsynlighet}: $P(A)=\sum_{i=1}^n P(B_i\cap A)=\sum_{i=1}^kP(B_i)\cdot P(A|B_i)$\\
+					\textbf{Bayes setning}: $P(B|A)=\frac{P(B)\cdot P(A|B)}{P(A)}$\\
+					\textbf{Tilfeller ved uavhengighet:}\\
+					$P(A\cap B)=P(A)\cdot P(B)$\\
+					$P(A|B)=A(A)$\\
+				}
+				\center\normalsize Stokastisk variabel\\
+				{\footnotesize\raggedright
+					\textbf{En variabel}\\
+					$\mu=E(X)=\begin{cases}
+						\sum_x x\cdot f(x), &\text{deskret}\\
+						\int_{-\infty}^\infty x\cdot f(x) dx, &\text{kontinuerlig}
+					\end{cases}$\\
+					$\sigma^2=Var(X)=\begin{cases}
+						\sum_x (x-\mu)^2f(x), &\text{deskret}\\
+						\int_{-\infty}^\infty (x-\mu)^2\cdot f(x) dx, &\text{kontinuerlig}
+					\end{cases}$\\
+					$F(x)=\int_0^xf(t)\,dt$\\
+					\textbf{Funksjoner av stokastiske variabler}\\
+					$\mu_{g(X)}=E(g(X))=\begin{cases}
+						\sum_x g(x)\cdot f(x), &\text{deskret}\\
+						\int_{-\infty}^\infty g(x) \cdot f(x) dx, &\text{kontinuerlig}
+					\end{cases}$\\
+					$\sigma^2_{g(X)}=Var(g(X))=\begin{cases}
+						\sum_x (g(x)-\mu_{g(X)})^2\cdot f(x), &\text{deskret}\\
+						\int_{-\infty}^\infty (g(x)-\mu_{g(X)})^2 \cdot f(x) dx, &\text{kontinuerlig}
+					\end{cases}$\\
+					$\mu_{g(X,Y)}=E(g(X,Y))=\begin{cases}
+						\sum_x\sum_x g(x,y) f(x,y), &\text{deskret}\\
+						\int_{-\infty}^\infty\int_{-\infty}^\infty g(x,y) f(x,y)\,dx\,dy &\text{kontinuerlig}
+					\end{cases}$\\
+					\textbf{Simultanfordeling for to variabler}\\
+					$P(X,Y)=\begin{cases}
+						\sum\sum f(x,y),&\text{deskret}\\
+						\int\int f(x,y)\,dx\,dy, &\text{kontinuerlig}
+					\end{cases}$\\
+					\textbf{Marginale fordelinger} (to variabler)\\
+					$g(x)=\begin{cases}
+						\sum_y f(x,y)\\
+						\int_{-\infty}^\infty f(x,y)\,dy
+					\end{cases}$\\
+					$h(y)=\begin{cases}
+						\sum_x f(x,y)\\
+						\int_{-\infty}^\infty f(x,y)\,dx
+					\end{cases}$\\
+					\textbf{Betinga fordeling} (for Y gitt X)\\
+					$f(y|x)=\frac{f(x,y)}{g(x)},\quad g(x)>0$\\
+					\textbf{Kovarians}\\
+					$\sigma_{XY}=Cov(X,Y)=\begin{cases}
+						\sum_x\sum_y(x-\mu_X)(y-\mu_Y)f(x,y)\\
+						\int_{-\infty}^\infty\int_{-\infty}^\infty(x-\mu_X)(y-\mu_Y)f(x,y) \, dx \, dy
+					\end{cases}$\\
+					Korrelasjon:\\
+					$\rho_{XY}=\frac{Cov(X,Y)}{\sqrt{Var(x)\cdot Var(y)}}, \qquad -1 < \rho_{XY} < 1$\\
+				}
+				\center\normalsize Forenklinger for lineærkombinasjoner\\
+				{\footnotesize\raggedright
+					$Var(aX+bY)=a^2Var(X)+b^2Var(Y)+2ab\cdot Cov(X,Y)$\\
+					Merk: hvis X og Y er uavhengige er $Cov(X,Y)=0$\\
+					$E(aX+b)=aE(X)+b$\\
+					\textbf{Tsjebysjeffs teorem}: Sannsynligheten for at verdien på en variabel $X$ ligger innafor $k$ avstander fra forventningsverdien er minst $1-\frac{1}{k^2}$\\
+					\textbf{Sannsynlighetsmaksimeringsfunksjonen}:\\
+					$L(\Theta)=\prod_{i=1}^n f(x_i,\Theta)$\\
+					Løses ved å:\\
+					1. Ta algoritmen av funksjonen\\
+					$\ln \left(\frac{a}{b}\right)=\ln(a)-\ln(b),\qquad \ln(ab)=\ln(a)+\ln(b)$\\
+					2. Deriver utrykker med hensyn på variabelen $\Theta$ oftest $\beta$\\
+					3. Sett utrykket lik $0$ og løs med hensyn på variabelen.\\
+					\textbf{Tilfeldig utvalg}:\\
+					Når et utvalg er tilfeldig, kan vi se på det som en mengde identiske og uavhengige observasjoner.\\
+					\textbf{QQ-plot}:\\
+					- Plotter utvalgskvantiler (Observasjonene ordna etter størrelse) mot teoretiske kvantiler (``Ideelle observasjoner'') fra aktuell fordeling\\
+					- Teoretiske kvantiler er gitt ver invers kumulativ fordeling ``jevnt spredte'' sannsynligheter mellom 0 og 1\\
+					- Om antatt fordeling stemmer skal plotter gi en tilnerma rett linje $x=y$\\
+				}
+			\end{block}
+		\end{column}
+		\begin{column}{.66\linewidth}
+		\end{column}
+	\end{columns}
+\end{frame}
+\begin{frame}{} 
+	\begin{columns}[t]
+		\begin{column}{.25\linewidth}
+			\begin{block}{\center\normalsize Estimering}
+				\center\normalsize Viktige estimatoregenskaper:\\
+				{\footnotesize\raggedright
+					Estimatoren $\hat\Theta$ bør være \textbf{forventningsrett}, DVS $E(\hat\Theta)=\Theta$, hvor $\Theta$ er et parameter du prøver å estiemre. \\
+					\textbf{Variansen} til $\hat\Theta$ bør være synkende med økende antall observasjoner.\\
+					Om du har to estimatorer $\hat\Theta_1, \hat\Theta_2$ er estimatoren med minst varians den mest effektive estimatoren for $\Theta$.
+				}
+				\center\normalsize Noen vanlige estimatorer, standardsituasjoner:\\
+				{\footnotesize\raggedright
+					$\mu$: For et tilfeldig utvalg av størrelse $n$ fra en populasjon med forventning $\mu$ og varians $\sigma^2$ er en estimator for $\mu$ gitt ved: \\
+					$\bar X=\frac{1}{n}\sum_{i=1}^nX_i\quad E(\bar X)=\mu\quad Var(\bar X)=\frac{\sigma^2}{n}$\\
+					$\sigma^2$: For et tilfeldig utvalg av størrelse $n$ fra en populasjon med forventning $\mu$ og varians $\sigma^2$ er en estimator for $\sigma^2$ gitt ved: \\
+					$S^2=\frac{1}{n-1}\sum_{i=1}^n(X_i-\bar X)^2\,E(S^2)=\sigma^2\,Var(S^2)=\frac{2\sigma^4}{n-1}$\\
+					$p$: For et tilfeldig utvalg av størrelse $n$ fra et binomisk forsøk (Bernulli-forsøksrekke) med sannsynlighet $p$. En estimator for $p$ er gitt ved\\
+					$\hat p=\frac{X}{n}\qquad E(\hat p)=p\qquad Var(\hat p)=\frac{p(1-p)}{n}$\\
+					$\mu_1-\mu_2$: For to uavhengige utvalg av størrelser $n_1,n_2$ fra populasjoner med forventning $\mu_1,\mu_2$ og varianser $\sigma_1^2,\sigma_2^2$ er en estimator for $\mu_1-\mu_2$ gitt ved \\
+					$\bar X_1 - \bar X_2 \, E(\bar X_1 - \bar X_2)=\mu_1-\mu_2\,Var(\bar X_1 - \bar X_2)=\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}$\\
+					$\frac{\sigma_1^2}{\sigma_2^2}$: For to tilfeldig utvalg av størrelser $n_1,n_2$ fra normalfordelte populasjoner med forventninger $\mu_1,\mu_2$ of varianser $\sigma_1^2,\sigma_2^2$ er en estimator for $\frac{\sigma_1^2}{\sigma_2^2}$ gitt ved:\\
+					$\frac{S_1^2}{S_2^2}$\\
+					$p_1-p_2$: For to uavhengige utvalg fra binomiske forsøk med sannsynligheter $p_1,p_2$ er en estimator for $p_1-p_2$ gitt ved:\\
+					$\hat p_1 - \hat p_2 = \frac{X_1}{n_1}-\frac{X_2}{n_2}\,E(\hat p_1 - \hat p_2)=p_1-p_2\,$\\
+					$Var(\hat p_1 - \hat p_2)=\frac{\hat p_1 (1 - \hat p_1)}{n_1} + \frac{\hat p_2 (1 - \hat p_2)}{n_2}$\\
+					$\mu_D$: For to parvise tilfeldig utvalg av størrlese $n$ der differansene fra populasjonene med forventning $\mu_D$ og varians $\sigma_D^2$ er en estimator for $\mu_D$ gitt ved: \\
+					$\bar D \qquad E(\bar D)=\mu_D \qquad Var(\bar D)=\frac{\sigma_D^2}{n}$
+				}
+			\end{block}
+			\begin{block}{\center\normalsize Utvalgsfordelinger}
+				{\footnotesize\raggedright
+					En utvalgsfordeling er fordelinga for en observator (funksjon av de stokastiske variablene i utvalget) for et (tilfeldig) utvalg data. Vi er gjerne interresert i fordelinga til (de spesielle observatorene som er ) estimatorer for paramerere i populasjonen, ofte på standarisert form.
+				}
+				\center\normalsize Standardsituasjonene (Utvalgsfordelinger)\\
+				{\footnotesize\raggedright
+					$\bar X, Z$: For et tilfeldig utvalg av størrelse $n$ fra en normalfordelt populasjon med forventning $\mu$ og varians $\sigma^2$ vil:\\
+					$\bar X \sim N \left( \mu, \frac{\sigma}{ \sqrt n} \right) \qquad Z=\frac{\bar{X}-E(\bar X)}{\sqrt{Var(\bar X)}}=\frac{\bar X - \mu}{\frac{\sigma}{\sqrt{n}}}\sim N(0,1)$\\
+					\textbf{SGT}: Selv om populasjonen ikke er normalfordelt vil resultatet over gjelde når $n \rightarrow \infty$. Regner vanlighvis tilnærminga for god når $n\geq 30$\\
+					$T$: For et tilfeldig utvalg av størrelser $n$ fra en normalfordelt populasjon med forventning $\mu$ og varians $\sigma^2$, der variansen estimeres ved $S^2$ fra utvalget har vi at:\\
+					$T=\frac{\bar X - \mu}{\frac{S}{\sqrt n}}=\frac{\frac{\bar X - \mu}{\frac{\sigma}{\sqrt n}}}{\sqrt \frac{S^2}{\sigma^2}}\sim t_{n-1}$\\
+					$S^2$: For et tilfeldig utvalg av sørrelse $n$ fra en normalfordelt populasjon med forventning $\mu$ og varians $\sigma^2$:\\
+					$\frac{(n-1)S^2}{\sigma^2}=\frac{1}{\sigma^2}\sum_{i=1}^n(X_i-\bar X)^2\sim \chi^2_{n-1}$\\
+					$\hat p$: For et tilfeldig utvalg av størrelse $n$ fra et binomisk forsøk med sannsynlighet $p$ har vi tilnærmet at:\\
+					$Z=\frac{\hat p - E(\hat p)}{\sqrt{Var(\hat p)}}=\frac{\hat p - p}{\sqrt{\frac{p(1-p)}{n}}}\sim N(0,1)$ \\
+					$\bar X_1 - \bar X_2$: For to uavhengige tilfeldig utvalg $n_1,n_2$ (normalfordelt) med forventning $\mu_1,\mu_2$ og varianser $\sigma_1^2,\sigma_2^2$ vil: \\
+					$\bar X_1 - \bar X_2 \sim N\left( \mu_1-\mu_2,\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}} \right)$\\
+					Eller\\
+					$Z=\frac{(\bar X_1 - \bar X_2)-(\mu_1-\mu_2)}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}}\sim N(0,1)$\\
+					Gjelder også for tilnærma uten å forutsette normalfordelt (stor $n_1$ og $n_2$)\\
+					\textbf{For ukjent men lik varians} $\sigma_1^2=\sigma_2^2=\sigma_p^2$ estimeres med $S^2_p$:\\
+					$T=\frac{(\bar X_1 - \bar X_2)-(\mu_1-\mu_2)}{S_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}\sim T_{n_1+n_2-2}$\\
+					\textbf{For ukjent og ulik varians} $\sigma_1^2\neq\sigma_2^2$, estimeres med $S_1^2,S_2^2$\\
+					$T=\frac{(\bar X_1 - \bar X_2)-(\mu_1-\mu_2)}{\sqrt{\frac{S_1^2}{n_1}+\frac{S_2^2}{n_2}}}\sim T_{\nu}\quad \nu=\frac{\left(\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2} \right)^2}{\frac{\left(\frac{S_1^2}{n_1}\right)^2}{n_1-1} + \frac{\left( \frac{S_2^2}{n_2} \right)^2}{n_2-1}}$\\
+					$F$: For to uavhengige tilfeldige utvalg $n_1,n_2$ (normalfordelt) med forventning $\mu_1,\mu_2$ og varianser $\sigma_1^2,\sigma_2^2$ har vi at: \\
+					$F=\frac{\frac{S_1^2}{n_1}}{\frac{S_2^2}{n_2}}=\frac{S_1^2\sigma_2^2}{S_2^2\sigma_1^2}\sim F_{n_1-1,n_2-1}$\\
+					$\hat p_1 - \hat p_2$: med to tilfeldig utvalg $n_1,n_2$ (binomisk) med sannsynligheter $p_1,p_2$ har vi tilnærma at (om $n_1,n_2$ stor nok):\\
+					$Z=\frac{(\hat p_1 -\hat p_2)-(p_1-p_2)}{\sqrt{\frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}{n_2}}}\sim N(0,1)$\\
+					$\bar D$: for to parvise tilfeldige utvalg av størrelse $n$ der differansene er normalfordelte med forventning $\mu_D$ og varians $\sigma_D^2$ og der variansen estimeres ved $S_D^2$ fra utvalget har vi at:\\
+					$T=\frac{\bar D - \mu_D}{\frac{S_D}{\sqrt n}}\sim t_{n-1}$
+				}
+			\end{block}
+		\end{column}
+		\begin{column}{.25\linewidth}
+			\begin{block}{\center Intervallestimering}
+				\center\normalsize Konfidensintervall for $\mu$ (KI)\\
+				{\footnotesize\raggedright
+					KI for $\mu$ med kjent $\sigma^2$: \\
+					$P\left( -z_{\frac{\alpha}{2}} < \frac{\bar X-\mu}{\frac{\sigma}{\sqrt{n}}} < z_{\frac{\alpha}{2}} \right) = 1-\alpha$\\
+					$\Rightarrow \mu = \bar X \pm z_{\frac{\alpha}{2}} \cdot\frac{\sigma}{\sqrt{n}}$ \\
+					KI for $\mu$ med $S^2$ som estimator for ukjent $\sigma^2$
+					med $n-1$ frihetsgrader:
+					$P\left( -t_{\frac{\alpha}{2}} < \frac{\bar X-\mu}{\frac{s}{\sqrt{n}}} < t_{\frac{\alpha}{2}} \right) = 1-\alpha $\\ $\Rightarrow \mu = \bar X \pm t_{\frac{\alpha}{2}} \cdot\frac{s}{\sqrt{n}}$ \\
+				}
+				\center\normalsize Konfidensintervall for $\sigma^2$ med $n-1$ (KI)\\
+				{\footnotesize\raggedright
+					$P\left( \mathcal{X}^2_{1-\frac{\alpha}{2}} <\frac{(n-1)S^2}{\sigma^2} < \mathcal{X}^2_{\frac{\alpha}{2}} \right)$ \\
+					$\Rightarrow \sigma^2 \in \left[ \frac{(n-1)S^2}{\mathcal{X}^2_{\frac{\alpha}{2}}}, \frac{(n-1)S^2}{\mathcal{X}^2_{1-\frac{\alpha}{2}}} \right]$
+				}
+				\center\normalsize Konfidensintervall for $p$\\
+				{\footnotesize\raggedright
+					KI for $p$ med utvalg av størrelse $n$ fra et binomisk forsøk med sannsynlighet $p$ (OBS: $n>30$ /stor nok)
+					$P\left( -z_{\frac{\alpha}{2}} < \frac{\hat p - p}{\sqrt{\frac{p(1-p)}{n}}} < z_{\frac{\alpha}{2}} \right) = 1 - \alpha$ \\ 
+					$\Rightarrow p = \hat p \pm z_\frac{\alpha}{2} \sqrt{\frac{p(1-p)}{n}}$
+					Erstatt $p$ i utrykket med $\hat p$ for å kunne rekne ut
+				}
+				\center\normalsize Konfidensintervall for $\mu_1 - \mu_2$\\
+				{\footnotesize\raggedright
+					For to uavhengige tilfelig utvalgte utvalg av størrelser $n_1$ og $n_2$ fra normalfordelte populasjoner med forventning $\mu_1, \mu_2$ og vareanser $\sigma_1^2, \sigma_2^2$: \\
+					For \textbf{kjente} vareanser $\sigma_1^2, \sigma_2^2$: \\
+					$\mu_1-\mu_2=(\bar x_1 - \bar x_2) \pm x_\frac{\alpha}{2}\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}=1-\alpha$\\
+					For \textbf{ukjente men like} vareanser $\sigma_1^2=\sigma_2^2$ med antall frihetsgrader $\nu = n_1 + n_2 - 2$:\\
+					$\mu_1-\mu_2=(\bar x_1 - \bar x_2) \pm s_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}=1-\alpha$\\
+					For \textbf{ukjente men ulike} vareanser $\sigma_1^2\neq \sigma_2^2$ der antall frihetsgrader $\nu$ er gitt fra utvalgsfordelinga: \\
+					$\mu_1-\mu_2=(\bar x_1 - \bar x_2) \pm t_\frac{\alpha}{2}\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}=1-\alpha$\\
+				}
+				\center\normalsize Konfidensintervall for $\frac{\sigma_1^2}{\sigma_2^2}$\\
+				{\footnotesize\raggedright
+					Normalfordelt, med $\mu_1,\mu_2$ og $\sigma_1^2,\sigma_2^2$:\\
+					$P\left( f_{1-\frac{\alpha}{2},\nu_1,\nu_2} < \frac{S_1^2\sigma_2^2}{S_2^2\sigma_1^2} <  f_{\frac{\alpha}{2},\nu_1,\nu_2}\right)$\\
+					$\Rightarrow \frac{\sigma_1^2}{\sigma_2^2} \in \left[ \frac{S_1^2}{S_2^2}\frac{1}{f_{\frac{\alpha}{2},\nu_1,\nu_2}}, \frac{S_1^2}{S_2^2}f_{\frac{\alpha}{2},\nu_1,\nu_2} \right] $
+				}
+				\center\normalsize Konfidensintervall for $p_1-p_2$\\
+				{\footnotesize\raggedright
+					Uavhengig tilfeldig utvalg $n_1,n_2$ fra binomisk forsøk med sannsynlighet $p_1,p_2$ har vi (om $n_1,n_2$ store nok):\\
+					$(\hat p_1 - \hat p_2) \pm z_\frac{\alpha}{2} \sqrt{\frac{\hat p_1 (1 - \hat p_1)}{n_1} + \frac{\hat p_2 (1 - \hat p_2)}{n_2}}=1-\alpha$
+				}
+				\center\normalsize Konfidensintervall for $\mu_D$\\
+				{\footnotesize\raggedright
+					For to parvise tilfeldige utvalg, størrelse $n$ med normalfordelte differanse med forventning $\mu_D$ og varians $\sigma^2_D$ (Variansen estimeres med $S_D^2$) \\
+					$\bar d \pm t_\frac{\alpha}{2}\frac{S_D}{\sqrt{n}}=1-\alpha$
+				}
+				\center\normalsize Lengden av KI\\
+				{\footnotesize\raggedright
+					For en normalfordelt estimator med kjent varians $\sigma^2$ kan vi regne ut hva lengden vil bli for et gitt valg av $n$ og $\alpha$ \\
+					$L=2\cdot z_\frac{\alpha}{2}\cdot SE(\hat\Theta)$, to typiske tilfeller:
+					\begin{enumerate}
+						\item Konstruere KI for $\mu$ basert på estimatoren: $\bar X$ blir lengda:\\
+							$L=2\cdot z_\frac{\alpha}{2}\cdot \frac{\sigma}{\sqrt{n}}\Rightarrow n=\left( \frac{2z_\frac{\alpha}{2}\sigma}{L} \right)^2$\\
+							Når $\sigma^2$ må estiemres kan vi finne approx forventa lengde\\
+						\item Når vi konstruerer KI for $p$ basert på andelsestimatoren $\hat p$ ($l \approx L$):\\
+							$L=2\cdot z_\frac{\alpha}{2}\sqrt{\frac{\hat p (1 - \hat p)}{l}}\leq \frac{z_\frac{\alpha}{2}}{\sqrt{n}}\Rightarrow n=\left( \frac{2z_\frac{\alpha}{2}\sqrt{\hat p (1 - \hat p)}}{l} \right)^2$
+
+					\end{enumerate}
+				}
+				\center\normalsize Estimeringsfeil\\
+				{\footnotesize\raggedright
+					Når fordelinga til estimatoren er kjent (utvalgsfordelinga) kan vi regne ut hvor stor feil vi gjør i estimeringa. Vil ofte ha en viss sannsynlighet for at feilen ikke skal overskride en verdi $e$\\
+					$P(|\hat\Theta-\Theta|<e=1-\alpha)$ (vanlige tilfeller)\\
+					$\bar X$ (normalfordelt):\\
+					$P(|\bar X - \mu|<e=1-\alpha) \Rightarrow n=\left( \frac{z_\frac{\alpha}{2}\sigma}{e}\right)^2\Rightarrow e=z_\frac{\alpha}{2}\frac{\sigma}{\sqrt n}$
+					$\hat p$ (binomisk):\\
+					$P(|\hat p - p| < e=1-\alpha)\Rightarrow n\approx \left(\frac{z_\frac{\alpha}{2}\sqrt{\hat p {1-\hat p}}}{e}\right)^2\Rightarrow e\approx z_\frac{\alpha}{2}\sqrt{\frac{\hat p(1 - \hat p)}{n}}$
+				}
+				\center \normalsize Noen regneregler\\
+				{\footnotesize\raggedright
+					$(u\cdot v)' = u'v + u\cdot v'$\\
+					$\left( \frac{u}{v}\right) = \frac{u'v - u\cdot v'}{v^2}$ \\
+					$\int \ln (x) \, dx=x\ln (x) -x + C$ \\
+					$u$ er et utrykk med $x$\\
+					$\int a^u \, dx = \frac{a^u}{u'\cdot \ln(a)} + C$\\
+					$\int \frac{1}{u} = \frac{\ln(x)}{u'} + C$ \\
+					$\int u \cdot v' \, dx = u\cdot v-\int u'v \, dx$
+				}
+			\end{block}
+		\end{column}
+		\begin{column}{.25\linewidth}
+			\begin{block}{}
+				\center\normalsize Prediksjonintervall\\
+				{\footnotesize\raggedright
+					Et intervall som sier noe om neste verdi $X_0$ i en normalfordelt populasjon: $X\sim N(\mu,\sigma)$\\
+					\textbf{Kjent $\mu$ og $\sigma$} (spredningsintervall)\\
+					$P\left( \mu - z_\frac{\alpha}{2} \cdot \sigma < X_0 < \mu + z_\frac{\alpha}{2} \cdot \sigma \right)=1-\alpha$\\
+					$\Rightarrow X_0=\mu \pm z_\frac{\alpha}{2}\cdot \sigma$\\
+					\textbf{Ukjent $\mu$, kjent $\sigma$} \\
+					$P\left( \bar X - z_\frac{\alpha}{2} \cdot \sigma \sqrt{1 + \frac{1}{n}} < X_0 < \bar X + z_\frac{\alpha}{2} \cdot \sigma \sqrt{1 + \frac{1}{n}} \right)=1-\alpha$\\
+					$\Rightarrow X_0=\bar x \pm z_\frac{\alpha}{2}\cdot \sigma \sqrt{1 + \frac{1}{n}}$\\
+					\textbf{Ukjent $\mu, \sigma$} frihetsgrad $\nu=n-1$\\
+					$X_0=\bar x \pm z_\frac{\alpha}{2} \cdot S\sqrt{1 + \frac{1}{n}}$ \\
+					\textbf{Formel for $S_P^2$} (Gjelder for alt på arket) \\
+					$S_P^2=\frac{S_1(n_1-1)+S_2^2(n_2-1)}{n_1 + n_2 - 2}$
+				}
+			\end{block}
+			%\end{column}
+			%\begin{column}{.25\linewidth}
+			\begin{block}{\center\normalsize Fordelinger}
+				\center\normalsize Binomisk fordeling\\
+				{\footnotesize\raggedright
+					\begin{enumerate}
+						\item $n$ uavhengige delforsøk
+						\item To utfall: suksess/ikke suksess
+						\item Samme sannsynlighet for $p=P(a)$ (suksess) i alle delforsøk
+					\end{enumerate}
+				}
+				\center\normalsize Hypergeometrisk fordeling\\
+				{\footnotesize\raggedright
+					\begin{enumerate}
+						\item Populasjon med $N$ elementer
+						\item $k$ av disse regnes som ``suksess'', $N-k$ som ``fiasko''
+						\item Trekker $n$ elementer uten tilbakelegging
+					\end{enumerate}
+				}
+				\center\normalsize Negativ binomisk fordeling\\
+				{\footnotesize\raggedright
+					Antall forsøk du må gjøre for at hendelsen $A$ (suksess) skal intreffe $k$ ganger
+				}
+				\center\normalsize Geometrisk fordeling\\
+				{\footnotesize\raggedright
+					Antall forsøk du må gjøre for at hendelsen $A$ (suksess) skal intreffeførste gang
+				}
+				\center\normalsize Poisson-fordeling\\
+				{\footnotesize\raggedright
+					$\mu = \lambda t$, $\sigma^2=Var(X)=\lambda t$\par
+					$f(x)=\frac{\mu^x}{x!}e^{-x}$\par
+					\begin{enumerate}
+						\item Antallet av $A$ disjunkte tidsintervall er uavhengige
+						\item Forventa antall av $A$ er konstant list $\lambda$ (raten) per tidsenhet
+						\item Kan ikke få to forekomster samtidig
+					\end{enumerate}
+				}
+				\center\normalsize Gammafordeling\\
+				{\footnotesize\raggedright
+					En kontinuerlig vareabel $X$ er gammafordelt med parameter $\alpha > 0$ og $\beta > 0$ dersom tetthetsfunksjonen er gitt ved (se blå tabell). Ventetida til hendelse nummer $k$ i en Poisson-prosess vil være gammafordelt med $\alpha=k$ og $\beta=\frac{1}{\lambda}$
+				}
+				\center\normalsize Eksponensialfordeling\\
+				{\footnotesize\raggedright
+					Ventetida til første hendelse (og mellom etterfølgende handelser) i en Poisson-prosess følger en eksponensialfordeling. En kontinuerlig variabel $X$ har eksponentialfordeling med parameter $\beta > 0$ dersom tetthetsfunksjonen er gitt ved (se tabellbok: $f(x)$). Eksponensialfordelinga er en variant av gammafordelinga med $\alpha=1$
+				}
+				\center\normalsize $E(X)$ og $Var(X)$\\
+				{\footnotesize\raggedright
+					\begin{equation*}
+						\begin{aligned}
+							E(x)&=\int_{-\infty}^\infty x\,f(x) \,dx \\
+							E(x)&=\sum_{i=1}^N x\,f(x) \,dx \\
+							E(g(x))&=\int_{-\infty}^\infty g(X)f(x)\,dx \\
+							E(aX+bY)&=aE(X)+bE(Y) \\
+							Var(aX+bY)&=a^2Var(X)+b^2Var(Y)
+						\end{aligned}
+					\end{equation*}
+				}
+			\end{block}
+		\end{column}
+		\begin{column}{.25\linewidth}
+			\begin{block}{\center\normalsize Testing}
+				{\footnotesize\raggedright
+					Lager tester som tar stilling til påstander. Har da: nullhypotesen ($H_0$) og en utfordrende hypotese ($H_1$). Vi bruker testobservatorer for å kunne si nø om $H_0$ er sann eller ikke.\\
+					\textbf{Normalfordelt estimator:}\\
+					Dersom vi har en normalfordelt forventningsrett estimator $\hat\Theta$ for parameter $\Theta$: $\hat\Theta\sim N(\Theta,SE(\hat\Theta))$\\
+					Kan vi konstruere testobservator $Z=\frac{\hat\Theta-\Theta_0}{SE(\hat\Theta_0)}$\\
+					(Måler hvor mange standardavvik $\hat\Theta$ er fra $\Theta_0$.)\\
+					-Om $H_0$ er sann vil $Z$ bli standardnormalfordelt\\
+					-Om $H_1$ er sann vil vi forvente at $\hat\Theta$ blir større enn $\Theta_0$, og dermed at $Z$ blir stor.\\
+					Forkastningsområdet velges slik at med sannsynlighet $\alpha$ for å få en så stor verdi, dersom $H_0$ er sann. Kritisk verdi blir da $z_\alpha$ om $Z>z_\alpha$\\
+					\textbf{P-verdi}:\\
+					Som et alternativ fil å finne et forkastningsområde for $Z$ kan man finne en $p-verdi$ som er det minste signifikansnivået som ville forkastet nullhypotesen.\\
+					\textbf{Feil av type I/II}:\\
+					P(Feil av type I) = P(Forkaste en rett $H_0$)=$\alpha$\\
+					P(Feil av type II) = P(ikke forkaste gal $H_0$)=$\beta$\\
+					Det ideelle er å få $\alpha$ og $\beta$ minst mulig.\\
+					$1-\beta$ kalles for styrken til en test og sier hvor sannsynlig det er å forkaste $H_0$ som funskjon av den sanne parameterverdien. Ved å finne denne for ulike verdier av parameteren akn vi skissere en styrkefunksjon.\\
+					\textbf{Ulike hypoteseoppsett}:\\
+					Om vi har $H_0\Rightarrow \hat\Theta=\Theta_0$ har vi tre tester. Venstresidig, tosidig og høyresidig. $H_1$ blir da respektivt:\\
+					$\hat\Theta<\Theta_0\qquad\hat\Theta\neq\Theta_0\qquad\hat\Theta>\Theta_0$\\
+					Hvis ikke en retning er indikert er en tosidig test å foretrekke.\\
+					\textbf{Noen vanlige tester, standardsituasjoner}\\
+					$\mu$: fra normalfordelt utvalg av størrelse $n$, kjent $\sigma^2$. Testobservator blir da (for alle testene): $Z=\frac{\bar X - \mu_0}{\frac{\sigma}{\sqrt n}}$\\
+					Som forkaster når (VS Tosidig HS)\\
+					$z<-z_\alpha\qquad |z|>z_\frac{\alpha}{2}\qquad z>z_\alpha$\\
+					$\mu$: fra normalfordelt utvalg av størrelse $n$, ukjent $\sigma^2$, bruker $S^2$. Testobservator vil bli $t-fordelt$ med $n-1$ firhetsgrader\\
+					Testobservator blir da (for alle testene): $t=\frac{\bar X-\mu_0}{\frac{S}{\sqrt n}}$
+					Som forkaster når (VS Tosidig HS)\\
+					$t<-t_\alpha\qquad |t|>t_\frac{\alpha}{2}\qquad t>t_\alpha$\\
+					$\sigma^2$: fra normalfordelt utvalg av størrelse $n$. Testobservator vil bli $kjikvadratfordelt\,(\chi^2)$ med $n-1$ frihetsgrader.\\
+					Testobservator for alle testene: $\chi^2=\frac{(n-1)S^2}{\sigma_0^2}$\\
+					Som forkastes når: (VS Tosidig HS)\\
+					$\chi^2<-\chi^2_{1-\alpha}\qquad\chi^2<\chi^2_{1-\frac{\alpha}{2}}\vee\chi^2>\chi^2_\frac{\alpha}{2}$\\$ \qquad\chi^2>\chi^2_\alpha$\\
+					$p$ for et tilfeldig utvalg av størrelse $n$ fra et binomisk forsøk med sannsynlighet $p$. Hvis $n$ stor nok ($n \geq 30$) kan tilnærmes normalfordelt.\\
+					Testobservator blir da: $Z=\frac{\hat p - p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}$, grenser = grensene for $\mu$\\
+					\textbf{Hvis $n<30$} må man bruke binomisk fordeling, vanlig testobservator er da $X=$ antall suksesser.\\
+					Vanlig å bruke \textbf{p-verdi} for dette tilfellet.\\
+					$\mu_1-\mu_2$: For to uavhengige utvalg av størrelser $n_1,n_2$ (normalfordelt) med forventninger $\mu_1,\mu_2$ og varianser $\sigma^2_1,\sigma_2^2$. Dette gir $H_0$: $\mu_1-\mu_2=d_0$ (en vanlig test er $d_0=0$)\\
+					\textbf{Kjent varians} $\sigma_1^2,\sigma_2^2$: Testobservatoren blir da\\
+					$Z=\frac{(\bar X_1-\bar X_2)-d_0}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}}$ forkasningsgrensene blir som en vanlig Z test ($\mu$ med ukjent $\sigma^2$)\\
+					\textbf{ukjent og lik varians} $\sigma_1^2=\sigma_2^2=\sigma^2$:\\
+					Testobservatoren blir $t-fordelt$ med frihetsgrad $n_1 + n_2-2$:
+					$T=\frac{(\bar X_1 - \bar X_2) - d_0}{S_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}$\\
+					Forkastningsgrensene blir som en vanlig $T$ test ($\mu$ med ukjent $\sigma^2$)\\
+					\textbf{ukjent og ulik varians} $\sigma_1^2\neq\sigma_2^2$:\\
+					Testobservatoren blir \textit{t-fordelt} med frihetsgrad gitt fra utvalgsfordelinga. Testobservator blir da:
+					$T=\frac{(\bar X_1 - \bar X_2) - d_0}{\sqrt{\frac{S_1^2}{n_1}+\frac{S_2^2}{n_2}}}$\\
+					$\frac{\sigma_1^2}{\sigma_2^2}$: for to uavhengige utvalg av størrelser $n_1,n_2$ (normalfordelt) med forventninger $\mu_1,\mu_2$ og varianser $\sigma_1^2,\sigma_2^2$. Testobservatoren blir da \textit{f-fordelt} med firhetsgrader $n_1-1$ og $n_2-1$. Testobservatoren blir da (for alle testene): $F=\frac{S_1^2}{S_2^2}$ som forkastes når \\(VS Tosidig HS)\\
+					$F<\frac{1}{F_{\alpha,\nu_1,\nu_2}} \qquad F_{\frac{\alpha}{2},\nu_1,\nu_2} < F < \frac{1}{F_{\frac{\alpha}{2},\nu_1,\nu_2}} $\\$ F > F_{\alpha,\nu_1,\nu_2}$\\
+					$p_1-p_2$: For to uavhengige tilfeldige utvalg av størrelse $n_1,n_2$ (binomisk) med sannsynligheter $p_1,p_2$. Får $H_0:p_1-p_2=d_0$. Testobservator blir\\
+					$\frac{(\hat p_1 - \hat p_2)-d_0}{\sqrt{\frac{\hat p_1(1-\hat p_1)}{n_1}+\frac{\hat p_2 (1-\hat p_2)}{n_2}}}$ \\Hvis $d_0=0$:$\frac{\hat p_1 - \hat p_2}{\sqrt{p(1-p)}\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}$ Standardnormalfordelt ved stor nok $n_1,n_2$. Forkastningsgrense blir som en vanlig Z test ($\mu$ med kjent $\sigma^2$)\\
+					$\mu_D$: Differansene er normalfordelt, variansen $\sigma_D^2$ må estimeres $S_D^2$. Får hypotesen $H_0:\mu_D=d_0$\\
+					Testobservatoren er \textit{t-fordelt} med $n-1$ firhetsgrader. Testobservatoren blir da: $T=\frac{\bar D - d_0}{\frac{S_D}{\sqrt n}}$. Forkastningsområdet blir deretter som en vanlig T-test.
+				}
+				\center\normalsize Styrkefunksjon\\
+				{\footnotesize\raggedright
+					Ved å finne sannsynligheten for å forkaste $H_0$ for ulike verdier av parameteren, $\Theta$, finner vi styrkefunksjonen:\\
+					$1-\beta(\Theta)=P$(Forkaste $H_0$, sann verdi = $\Theta$)
+					$1-\beta(\mu)=1-\Phi\left(z_\alpha-\frac{\mu-\mu_0}{\frac{\alpha}{\sqrt n}}\right) \qquad n=\frac{(z_\alpha-z_\beta)^2\sigma^2}{(\mu-\mu_0)}$
+				}
+			\end{block}
+		\end{column}
+	\end{columns}
+\end{frame}
+\end{document}
