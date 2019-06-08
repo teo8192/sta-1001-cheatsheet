@@ -36,7 +36,7 @@
 					\textbf{Kombinasjonsregelen}\\
 					$n$ merka enheter, velger $k$ uten tilbakelegging, antall ikke-ordna utfall: $_nC_r=\binom{n}{k}=\frac{n!}{(n-k)!k!}$
 				}
-			\center\normalsize Sannsynlighetsregler\\
+				\center\normalsize Sannsynlighetsregler\\
 				{\footnotesize\raggedright
 					\textbf{Addisjonsregelen}: $P(A\cup B)=P(A)+P(B)-P(A \cap B)$\\
 					\textbf{Multiplikasjonsregelen}: $P(A\cap B)=P(A)\cdot P(B|A)=P(B)\cdot P(A|B)$\\
@@ -46,55 +46,6 @@
 					\textbf{Tilfeller ved uavhengighet:}\\
 					$P(A\cap B)=P(A)\cdot P(B)$\\
 					$P(A|B)=A(A)$\\
-				}
-				\center\normalsize Stokastisk variabel\\
-				{\footnotesize\raggedright
-					\textbf{En variabel}\\
-					$\mu=E(X)=\begin{cases}
-						\sum_x x\cdot f(x), &\text{deskret}\\
-						\int_{-\infty}^\infty x\cdot f(x) dx, &\text{kontinuerlig}
-					\end{cases}$\\
-					$\sigma^2=Var(X)=\begin{cases}
-						\sum_x (x-\mu)^2f(x), &\text{deskret}\\
-						\int_{-\infty}^\infty (x-\mu)^2\cdot f(x) dx, &\text{kontinuerlig}
-					\end{cases}$\\
-					$F(x)=\int_0^xf(t)\,dt$\\
-					\textbf{Funksjoner av stokastiske variabler}\\
-					$\mu_{g(X)}=E(g(X))=\begin{cases}
-						\sum_x g(x)\cdot f(x), &\text{deskret}\\
-						\int_{-\infty}^\infty g(x) \cdot f(x) dx, &\text{kontinuerlig}
-					\end{cases}$\\
-					$\sigma^2_{g(X)}=Var(g(X))=\begin{cases}
-						\sum_x (g(x)-\mu_{g(X)})^2\cdot f(x), &\text{deskret}\\
-						\int_{-\infty}^\infty (g(x)-\mu_{g(X)})^2 \cdot f(x) dx, &\text{kontinuerlig}
-					\end{cases}$\\
-					$\mu_{g(X,Y)}=E(g(X,Y))=\begin{cases}
-						\sum_x\sum_x g(x,y) f(x,y), &\text{deskret}\\
-						\int_{-\infty}^\infty\int_{-\infty}^\infty g(x,y) f(x,y)\,dx\,dy &\text{kontinuerlig}
-					\end{cases}$\\
-					\textbf{Simultanfordeling for to variabler}\\
-					$P(X,Y)=\begin{cases}
-						\sum\sum f(x,y),&\text{deskret}\\
-						\int\int f(x,y)\,dx\,dy, &\text{kontinuerlig}
-					\end{cases}$\\
-					\textbf{Marginale fordelinger} (to variabler)\\
-					$g(x)=\begin{cases}
-						\sum_y f(x,y)\\
-						\int_{-\infty}^\infty f(x,y)\,dy
-					\end{cases}$\\
-					$h(y)=\begin{cases}
-						\sum_x f(x,y)\\
-						\int_{-\infty}^\infty f(x,y)\,dx
-					\end{cases}$\\
-					\textbf{Betinga fordeling} (for Y gitt X)\\
-					$f(y|x)=\frac{f(x,y)}{g(x)},\quad g(x)>0$\\
-					\textbf{Kovarians}\\
-					$\sigma_{XY}=Cov(X,Y)=\begin{cases}
-						\sum_x\sum_y(x-\mu_X)(y-\mu_Y)f(x,y)\\
-						\int_{-\infty}^\infty\int_{-\infty}^\infty(x-\mu_X)(y-\mu_Y)f(x,y) \, dx \, dy
-					\end{cases}$\\
-					Korrelasjon:\\
-					$\rho_{XY}=\frac{Cov(X,Y)}{\sqrt{Var(x)\cdot Var(y)}}, \qquad -1 < \rho_{XY} < 1$\\
 				}
 				\center\normalsize Forenklinger for lineærkombinasjoner\\
 				{\footnotesize\raggedright
@@ -263,7 +214,7 @@
 					$u$ er et utrykk med $x$\\
 					$\int a^u \, dx = \frac{a^u}{u'\cdot \ln(a)} + C$\\
 					$\int \frac{1}{u} = \frac{\ln(x)}{u'} + C$ \\
-					$\int u \cdot v' \, dx = u\cdot v-\int u'v \, dx$
+					$\int u \cdot v' \, dx = u\cdot v-\int u'v \, dx$\\
 				}
 			\end{block}
 		\end{column}
@@ -287,59 +238,87 @@
 			%\end{column}
 			%\begin{column}{.25\linewidth}
 			\begin{block}{\center\normalsize Fordelinger}
-				\center\normalsize Binomisk fordeling\\
 				{\footnotesize\raggedright
-					\begin{enumerate}
-						\item $n$ uavhengige delforsøk
-						\item To utfall: suksess/ikke suksess
-						\item Samme sannsynlighet for $p=P(a)$ (suksess) i alle delforsøk
-					\end{enumerate}
-				}
-				\center\normalsize Hypergeometrisk fordeling\\
-				{\footnotesize\raggedright
-					\begin{enumerate}
-						\item Populasjon med $N$ elementer
-						\item $k$ av disse regnes som ``suksess'', $N-k$ som ``fiasko''
-						\item Trekker $n$ elementer uten tilbakelegging
-					\end{enumerate}
-				}
-				\center\normalsize Negativ binomisk fordeling\\
-				{\footnotesize\raggedright
-					Antall forsøk du må gjøre for at hendelsen $A$ (suksess) skal intreffe $k$ ganger
-				}
-				\center\normalsize Geometrisk fordeling\\
-				{\footnotesize\raggedright
-					Antall forsøk du må gjøre for at hendelsen $A$ (suksess) skal intreffeførste gang
-				}
-				\center\normalsize Poisson-fordeling\\
-				{\footnotesize\raggedright
+					\textbf{Binomisk fordeling}\\
+					1. $n$ uavhengige delforsøk\\
+					2. To utfall: suksess/ikke suksess\\
+					3. Samme sannsynlighet for $p=P(a)$ (suksess) i alle delforsøk\\
+					\textbf{Hypergeometrisk fordeling}\\
+					1. Populasjon med $N$ elementer\\
+					2. $k$ av disse regnes som ``suksess'', $N-k$ som ``fiasko''\\
+					3. Trekker $n$ elementer uten tilbakelegging\\
+					\textbf{Negativ binomisk fordeling}\\
+					Antall forsøk du må gjøre for at hendelsen $A$ (suksess) skal intreffe $k$ ganger\\
+					\textbf{Geometrisk fordeling}\\
+					Antall forsøk du må gjøre for at hendelsen $A$ (suksess) skal intreffeførste gang\\
+					\textbf{Poisson-fordeling}\\
 					$\mu = \lambda t$, $\sigma^2=Var(X)=\lambda t$\par
 					$f(x)=\frac{\mu^x}{x!}e^{-x}$\par
-					\begin{enumerate}
-						\item Antallet av $A$ disjunkte tidsintervall er uavhengige
-						\item Forventa antall av $A$ er konstant list $\lambda$ (raten) per tidsenhet
-						\item Kan ikke få to forekomster samtidig
-					\end{enumerate}
+					1. Antallet av $A$ disjunkte tidsintervall er uavhengige\\
+					2. Forventa antall av $A$ er konstant list $\lambda$ (raten) per tidsenhet\\
+					3. Kan ikke få to forekomster samtidig\\
+					\textbf{Gammafordeling}\\
+					En kontinuerlig vareabel $X$ er gammafordelt med parameter $\alpha > 0$ og $\beta > 0$ dersom tetthetsfunksjonen er gitt ved (se blå tabell). Ventetida til hendelse nummer $k$ i en Poisson-prosess vil være gammafordelt med $\alpha=k$ og $\beta=\frac{1}{\lambda}$\\
+					\textbf{Eksponensialfordeling}\\
+					Ventetida til første hendelse (og mellom etterfølgende handelser) i en Poisson-prosess følger en eksponensialfordeling. En kontinuerlig variabel $X$ har eksponentialfordeling med parameter $\beta > 0$ dersom tetthetsfunksjonen er gitt ved (se tabellbok: $f(x)$). Eksponensialfordelinga er en variant av gammafordelinga med $\alpha=1$\\
 				}
-				\center\normalsize Gammafordeling\\
+				\center\normalsize Stokastisk variabel\\
 				{\footnotesize\raggedright
-					En kontinuerlig vareabel $X$ er gammafordelt med parameter $\alpha > 0$ og $\beta > 0$ dersom tetthetsfunksjonen er gitt ved (se blå tabell). Ventetida til hendelse nummer $k$ i en Poisson-prosess vil være gammafordelt med $\alpha=k$ og $\beta=\frac{1}{\lambda}$
-				}
-				\center\normalsize Eksponensialfordeling\\
-				{\footnotesize\raggedright
-					Ventetida til første hendelse (og mellom etterfølgende handelser) i en Poisson-prosess følger en eksponensialfordeling. En kontinuerlig variabel $X$ har eksponentialfordeling med parameter $\beta > 0$ dersom tetthetsfunksjonen er gitt ved (se tabellbok: $f(x)$). Eksponensialfordelinga er en variant av gammafordelinga med $\alpha=1$
+					\textbf{En variabel}\\
+					$\mu=E(X)=\begin{cases}
+						\sum_x x\cdot f(x), &\text{deskret}\\
+						\int_{-\infty}^\infty x\cdot f(x) dx, &\text{kontinuerlig}
+					\end{cases}$\\
+					$\sigma^2=Var(X)=\begin{cases}
+						\sum_x (x-\mu)^2f(x), &\text{deskret}\\
+						\int_{-\infty}^\infty (x-\mu)^2\cdot f(x) dx, &\text{kontinuerlig}
+					\end{cases}$\\
+					$F(x)=\int_0^xf(t)\,dt$\\
+					\textbf{Funksjoner av stokastiske variabler}\\
+					$\mu_{g(X)}=E(g(X))=\begin{cases}
+						\sum_x g(x)\cdot f(x), &\text{deskret}\\
+						\int_{-\infty}^\infty g(x) \cdot f(x) dx, &\text{kontinuerlig}
+					\end{cases}$\\
+					$\sigma^2_{g(X)}=Var(g(X))=\begin{cases}
+						\sum_x (g(x)-\mu_{g(X)})^2\cdot f(x), &\text{deskret}\\
+						\int_{-\infty}^\infty (g(x)-\mu_{g(X)})^2 \cdot f(x) dx, &\text{kontinuerlig}
+					\end{cases}$\\
+					$\mu_{g(X,Y)}=E(g(X,Y))=\begin{cases}
+						\sum_x\sum_x g(x,y) f(x,y), &\text{deskret}\\
+						\int_{-\infty}^\infty\int_{-\infty}^\infty g(x,y) f(x,y)\,dx\,dy &\text{kontinuerlig}
+					\end{cases}$\\
+					\textbf{Simultanfordeling for to variabler}\\
+					$P(X,Y)=\begin{cases}
+						\sum\sum f(x,y),&\text{deskret}\\
+						\int\int f(x,y)\,dx\,dy, &\text{kontinuerlig}
+					\end{cases}$\\
+					\textbf{Marginale fordelinger} (to variabler)\\
+					$g(x)=\begin{cases}
+						\sum_y f(x,y)\\
+						\int_{-\infty}^\infty f(x,y)\,dy
+					\end{cases}$\\
+					$h(y)=\begin{cases}
+						\sum_x f(x,y)\\
+						\int_{-\infty}^\infty f(x,y)\,dx
+					\end{cases}$\\
+					\textbf{Betinga fordeling} (for Y gitt X)\\
+					$f(y|x)=\frac{f(x,y)}{g(x)},\quad g(x)>0$\\
+					\textbf{Kovarians}\\
+					$\sigma_{XY}=Cov(X,Y)=\begin{cases}
+						\sum_x\sum_y(x-\mu_X)(y-\mu_Y)f(x,y)\\
+						\int_{-\infty}^\infty\int_{-\infty}^\infty(x-\mu_X)(y-\mu_Y)f(x,y) \, dx \, dy
+					\end{cases}$\\
+					Korrelasjon:\\
+					$\rho_{XY}=\frac{Cov(X,Y)}{\sqrt{Var(x)\cdot Var(y)}}, \qquad -1 < \rho_{XY} < 1$\\
 				}
 				\center\normalsize $E(X)$ og $Var(X)$\\
 				{\footnotesize\raggedright
-					\begin{equation*}
-						\begin{aligned}
-							E(x)&=\int_{-\infty}^\infty x\,f(x) \,dx \\
-							E(x)&=\sum_{i=1}^N x\,f(x) \,dx \\
-							E(g(x))&=\int_{-\infty}^\infty g(X)f(x)\,dx \\
-							E(aX+bY)&=aE(X)+bE(Y) \\
-							Var(aX+bY)&=a^2Var(X)+b^2Var(Y)
-						\end{aligned}
-					\end{equation*}
+					$E(x)=\int_{-\infty}^\infty x\,f(x) \,dx$ \\
+					$E(x)=\sum_{i=1}^N x\,f(x) \,dx$ \\
+					$E(g(x))=\int_{-\infty}^\infty g(X)f(x)\,dx$ \\
+					$E(aX+bY)=aE(X)+bE(Y)$ \\
+					$Var(aX+bY)=a^2Var(X)+b^2Var(Y)$\\
+					$E(\chi^2_{n-1})=n-1$\\
 				}
 			\end{block}
 		\end{column}
