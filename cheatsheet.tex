@@ -23,58 +23,6 @@
 \begin{document}
 \begin{frame}{} 
 	\begin{columns}[t]
-		\begin{column}{.33\linewidth}
-			\begin{block}{}
-				\center\normalsize Kombinatorikk\\
-				{\footnotesize\raggedright
-					\textbf{Multiplikasjonsregelen}\\
-					Forsøk i $k$ etapper, med $m_1,m_2 \cdots,m_k$ mulige utfall i etappene. Totalt antall utfall: $\prod_{i=1}^k m_i$\\
-					\textbf{Potensregelen}\\
-					$n$ merka enheter, velger $k$ med tilbakelegging. Antall ordna utfall: $n^k$\\
-					\textbf{Permutasjonsregelen (nPr)}\\
-					$n$ merka enheter, velger $k$ uten tilbakelegging, antall ordna utfall: $_nP_r=\frac{n!}{(n-k)!}$\\
-					\textbf{Kombinasjonsregelen}\\
-					$n$ merka enheter, velger $k$ uten tilbakelegging, antall ikke-ordna utfall: $_nC_r=\binom{n}{k}=\frac{n!}{(n-k)!k!}$
-				}
-				\center\normalsize Sannsynlighetsregler\\
-				{\footnotesize\raggedright
-					\textbf{Addisjonsregelen}: $P(A\cup B)=P(A)+P(B)-P(A \cap B)$\\
-					\textbf{Multiplikasjonsregelen}: $P(A\cap B)=P(A)\cdot P(B|A)=P(B)\cdot P(A|B)$\\
-					\textbf{Betinga sannsynlighet}: $P(A|B)=\frac{P(A\cap B)}{P(B)}$\\
-					\textbf{Total sannsynlighet}: $P(A)=\sum_{i=1}^n P(B_i\cap A)=\sum_{i=1}^kP(B_i)\cdot P(A|B_i)$\\
-					\textbf{Bayes setning}: $P(B|A)=\frac{P(B)\cdot P(A|B)}{P(A)}$\\
-					\textbf{Tilfeller ved uavhengighet:}\\
-					$P(A\cap B)=P(A)\cdot P(B)$\\
-					$P(A|B)=A(A)$\\
-				}
-				\center\normalsize Forenklinger for lineærkombinasjoner\\
-				{\footnotesize\raggedright
-					$Var(aX+bY)=a^2Var(X)+b^2Var(Y)+2ab\cdot Cov(X,Y)$\\
-					Merk: hvis X og Y er uavhengige er $Cov(X,Y)=0$\\
-					$E(aX+b)=aE(X)+b$\\
-					\textbf{Tsjebysjeffs teorem}: Sannsynligheten for at verdien på en variabel $X$ ligger innafor $k$ avstander fra forventningsverdien er minst $1-\frac{1}{k^2}$\\
-					\textbf{Sannsynlighetsmaksimeringsfunksjonen}:\\
-					$L(\Theta)=\prod_{i=1}^n f(x_i,\Theta)$\\
-					Løses ved å:\\
-					1. Ta algoritmen av funksjonen\\
-					$\ln \left(\frac{a}{b}\right)=\ln(a)-\ln(b),\qquad \ln(ab)=\ln(a)+\ln(b)$\\
-					2. Deriver utrykker med hensyn på variabelen $\Theta$ oftest $\beta$\\
-					3. Sett utrykket lik $0$ og løs med hensyn på variabelen.\\
-					\textbf{Tilfeldig utvalg}:\\
-					Når et utvalg er tilfeldig, kan vi se på det som en mengde identiske og uavhengige observasjoner.\\
-					\textbf{QQ-plot}:\\
-					- Plotter utvalgskvantiler (Observasjonene ordna etter størrelse) mot teoretiske kvantiler (``Ideelle observasjoner'') fra aktuell fordeling\\
-					- Teoretiske kvantiler er gitt ver invers kumulativ fordeling ``jevnt spredte'' sannsynligheter mellom 0 og 1\\
-					- Om antatt fordeling stemmer skal plotter gi en tilnerma rett linje $x=y$\\
-				}
-			\end{block}
-		\end{column}
-		\begin{column}{.66\linewidth}
-		\end{column}
-	\end{columns}
-\end{frame}
-\begin{frame}{} 
-	\begin{columns}[t]
 		\begin{column}{.25\linewidth}
 			\begin{block}{\center\normalsize Estimering}
 				\center\normalsize Viktige estimatoregenskaper:\\
@@ -93,7 +41,7 @@
 					$\hat p=\frac{X}{n}\qquad E(\hat p)=p\qquad Var(\hat p)=\frac{p(1-p)}{n}$\\
 					$\mu_1-\mu_2$: For to uavhengige utvalg av størrelser $n_1,n_2$ fra populasjoner med forventning $\mu_1,\mu_2$ og varianser $\sigma_1^2,\sigma_2^2$ er en estimator for $\mu_1-\mu_2$ gitt ved \\
 					$\bar X_1 - \bar X_2 \, E(\bar X_1 - \bar X_2)=\mu_1-\mu_2\,Var(\bar X_1 - \bar X_2)=\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}$\\
-					$\frac{\sigma_1^2}{\sigma_2^2}$: For to tilfeldig utvalg av størrelser $n_1,n_2$ fra normalfordelte populasjoner med forventninger $\mu_1,\mu_2$ of varianser $\sigma_1^2,\sigma_2^2$ er en estimator for $\frac{\sigma_1^2}{\sigma_2^2}$ gitt ved:\\
+					$\frac{\sigma_1^2}{\sigma_2^2}$: For to tilfeldig utvalg av størrelser $n_1,n_2$ fra normalfordelte populasjoner med forventninger $\mu_1,\mu_2$ of varianser $\sigma_1^2,\sigma_2^2$ er en estimator for $\frac{\sigma_1^2}{\sigma_2^2}$ gitt ved:
 					$\frac{S_1^2}{S_2^2}$\\
 					$p_1-p_2$: For to uavhengige utvalg fra binomiske forsøk med sannsynligheter $p_1,p_2$ er en estimator for $p_1-p_2$ gitt ved:\\
 					$\hat p_1 - \hat p_2 = \frac{X_1}{n_1}-\frac{X_2}{n_2}\,E(\hat p_1 - \hat p_2)=p_1-p_2\,$\\
@@ -137,7 +85,7 @@
 		\end{column}
 		\begin{column}{.25\linewidth}
 			\begin{block}{\center Intervallestimering}
-				\center\normalsize Konfidensintervall for $\mu$ (KI)\\
+				\center\footnotesize\textbf{Konfidensintervall for $\mu$ (KI)}\\
 				{\footnotesize\raggedright
 					KI for $\mu$ med kjent $\sigma^2$: \\
 					$P\left( -z_{\frac{\alpha}{2}} < \frac{\bar X-\mu}{\frac{\sigma}{\sqrt{n}}} < z_{\frac{\alpha}{2}} \right) = 1-\alpha$\\
@@ -146,19 +94,19 @@
 					med $n-1$ frihetsgrader:
 					$P\left( -t_{\frac{\alpha}{2}} < \frac{\bar X-\mu}{\frac{s}{\sqrt{n}}} < t_{\frac{\alpha}{2}} \right) = 1-\alpha $\\ $\Rightarrow \mu = \bar X \pm t_{\frac{\alpha}{2}} \cdot\frac{s}{\sqrt{n}}$ \\
 				}
-				\center\normalsize Konfidensintervall for $\sigma^2$ med $n-1$ (KI)\\
+				\center\footnotesize\textbf{Konfidensintervall for $\sigma^2$ med $n-1$ (KI)}\\
 				{\footnotesize\raggedright
 					$P\left( \mathcal{X}^2_{1-\frac{\alpha}{2}} <\frac{(n-1)S^2}{\sigma^2} < \mathcal{X}^2_{\frac{\alpha}{2}} \right)$ \\
 					$\Rightarrow \sigma^2 \in \left[ \frac{(n-1)S^2}{\mathcal{X}^2_{\frac{\alpha}{2}}}, \frac{(n-1)S^2}{\mathcal{X}^2_{1-\frac{\alpha}{2}}} \right]$
 				}
-				\center\normalsize Konfidensintervall for $p$\\
+				\center\footnotesize\textbf{Konfidensintervall for $p$}\\
 				{\footnotesize\raggedright
 					KI for $p$ med utvalg av størrelse $n$ fra et binomisk forsøk med sannsynlighet $p$ (OBS: $n>30$ /stor nok)
 					$P\left( -z_{\frac{\alpha}{2}} < \frac{\hat p - p}{\sqrt{\frac{p(1-p)}{n}}} < z_{\frac{\alpha}{2}} \right) = 1 - \alpha$ \\ 
 					$\Rightarrow p = \hat p \pm z_\frac{\alpha}{2} \sqrt{\frac{p(1-p)}{n}}$
-					Erstatt $p$ i utrykket med $\hat p$ for å kunne rekne ut
+					Erstatt $p$ i utrykket med $\hat p$ for å kunne regne ut\\
 				}
-				\center\normalsize Konfidensintervall for $\mu_1 - \mu_2$\\
+				\center\footnotesize\textbf{Konfidensintervall for $\mu_1 - \mu_2$}\\
 				{\footnotesize\raggedright
 					For to uavhengige tilfelig utvalgte utvalg av størrelser $n_1$ og $n_2$ fra normalfordelte populasjoner med forventning $\mu_1, \mu_2$ og vareanser $\sigma_1^2, \sigma_2^2$: \\
 					For \textbf{kjente} vareanser $\sigma_1^2, \sigma_2^2$: \\
@@ -168,23 +116,23 @@
 					For \textbf{ukjente men ulike} vareanser $\sigma_1^2\neq \sigma_2^2$ der antall frihetsgrader $\nu$ er gitt fra utvalgsfordelinga: \\
 					$\mu_1-\mu_2=(\bar x_1 - \bar x_2) \pm t_\frac{\alpha}{2}\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}=1-\alpha$\\
 				}
-				\center\normalsize Konfidensintervall for $\frac{\sigma_1^2}{\sigma_2^2}$\\
+				\center\footnotesize\textbf{Konfidensintervall for $\frac{\sigma_1^2}{\sigma_2^2}$}\\
 				{\footnotesize\raggedright
 					Normalfordelt, med $\mu_1,\mu_2$ og $\sigma_1^2,\sigma_2^2$:\\
 					$P\left( f_{1-\frac{\alpha}{2},\nu_1,\nu_2} < \frac{S_1^2\sigma_2^2}{S_2^2\sigma_1^2} <  f_{\frac{\alpha}{2},\nu_1,\nu_2}\right)$\\
 					$\Rightarrow \frac{\sigma_1^2}{\sigma_2^2} \in \left[ \frac{S_1^2}{S_2^2}\frac{1}{f_{\frac{\alpha}{2},\nu_1,\nu_2}}, \frac{S_1^2}{S_2^2}f_{\frac{\alpha}{2},\nu_1,\nu_2} \right] $
 				}
-				\center\normalsize Konfidensintervall for $p_1-p_2$\\
+				\center\footnotesize\textbf{Konfidensintervall for $p_1-p_2$}\\
 				{\footnotesize\raggedright
 					Uavhengig tilfeldig utvalg $n_1,n_2$ fra binomisk forsøk med sannsynlighet $p_1,p_2$ har vi (om $n_1,n_2$ store nok):\\
 					$(\hat p_1 - \hat p_2) \pm z_\frac{\alpha}{2} \sqrt{\frac{\hat p_1 (1 - \hat p_1)}{n_1} + \frac{\hat p_2 (1 - \hat p_2)}{n_2}}=1-\alpha$
 				}
-				\center\normalsize Konfidensintervall for $\mu_D$\\
+				\center\footnotesize\textbf{Konfidensintervall for $\mu_D$}\\
 				{\footnotesize\raggedright
 					For to parvise tilfeldige utvalg, størrelse $n$ med normalfordelte differanse med forventning $\mu_D$ og varians $\sigma^2_D$ (Variansen estimeres med $S_D^2$) \\
-					$\bar d \pm t_\frac{\alpha}{2}\frac{S_D}{\sqrt{n}}=1-\alpha$
+					$\bar d \pm t_\frac{\alpha}{2}\frac{S_D}{\sqrt{n}}=1-\alpha$\\
 				}
-				\center\normalsize Lengden av KI\\
+				\center\footnotesize\textbf{Lengden av KI}\\
 				{\footnotesize\raggedright
 					For en normalfordelt estimator med kjent varians $\sigma^2$ kan vi regne ut hva lengden vil bli for et gitt valg av $n$ og $\alpha$ \\
 					$L=2\cdot z_\frac{\alpha}{2}\cdot SE(\hat\Theta)$, to typiske tilfeller:
@@ -313,12 +261,23 @@
 				}
 				\center\normalsize $E(X)$ og $Var(X)$\\
 				{\footnotesize\raggedright
-					$E(x)=\int_{-\infty}^\infty x\,f(x) \,dx$ \\
-					$E(x)=\sum_{i=1}^N x\,f(x) \,dx$ \\
-					$E(g(x))=\int_{-\infty}^\infty g(X)f(x)\,dx$ \\
-					$E(aX+bY)=aE(X)+bE(Y)$ \\
+					%$E(x)=\int_{-\infty}^\infty x\,f(x) \,dx$ \\
+					%$E(x)=\sum_{i=1}^N x\,f(x) \,dx$ \\
+					%$E(g(x))=\int_{-\infty}^\infty g(X)f(x)\,dx$ \\
+					%$E(aX+bY)=aE(X)+bE(Y)$ \\
 					$Var(aX+bY)=a^2Var(X)+b^2Var(Y)$\\
 					$E(\chi^2_{n-1})=n-1$\\
+				}
+				\center\normalsize Sannsynlighetsregler\\
+				{\footnotesize\raggedright
+					\textbf{Addisjonsregelen}: $P(A\cup B)=P(A)+P(B)-P(A \cap B)$\\
+					\textbf{Multiplikasjonsregelen}: $P(A\cap B)=P(A)\cdot P(B|A)=P(B)\cdot P(A|B)$\\
+					\textbf{Betinga sannsynlighet}: $P(A|B)=\frac{P(A\cap B)}{P(B)}$\\
+					\textbf{Total sannsynlighet}: $P(A)=\sum_{i=1}^n P(B_i\cap A)=\sum_{i=1}^kP(B_i)\cdot P(A|B_i)$\\
+					\textbf{Bayes setning}: $P(B|A)=\frac{P(B)\cdot P(A|B)}{P(A)}$\\
+					\textbf{Tilfeller ved uavhengighet:}\\
+					$P(A\cap B)=P(A)\cdot P(B)$\\
+					$P(A|B)=A(A)$\\
 				}
 			\end{block}
 		\end{column}
@@ -384,6 +343,58 @@
 					$1-\beta(\mu)=1-\Phi\left(z_\alpha-\frac{\mu-\mu_0}{\frac{\alpha}{\sqrt n}}\right) \qquad n=\frac{(z_\alpha-z_\beta)^2\sigma^2}{(\mu-\mu_0)}$
 				}
 			\end{block}
+		\end{column}
+	\end{columns}
+\end{frame}
+\begin{frame}{} 
+	\begin{columns}[t]
+		\begin{column}{.33\linewidth}
+			\begin{block}{}
+				\center\normalsize Kombinatorikk\\
+				{\footnotesize\raggedright
+					\textbf{Multiplikasjonsregelen}\\
+					Forsøk i $k$ etapper, med $m_1,m_2 \cdots,m_k$ mulige utfall i etappene. Totalt antall utfall: $\prod_{i=1}^k m_i$\\
+					\textbf{Potensregelen}\\
+					$n$ merka enheter, velger $k$ med tilbakelegging. Antall ordna utfall: $n^k$\\
+					\textbf{Permutasjonsregelen (nPr)}\\
+					$n$ merka enheter, velger $k$ uten tilbakelegging, antall ordna utfall: $_nP_r=\frac{n!}{(n-k)!}$\\
+					\textbf{Kombinasjonsregelen}\\
+					$n$ merka enheter, velger $k$ uten tilbakelegging, antall ikke-ordna utfall: $_nC_r=\binom{n}{k}=\frac{n!}{(n-k)!k!}$
+				}
+				\center\normalsize Sannsynlighetsregler\\
+				{\footnotesize\raggedright
+					\textbf{Addisjonsregelen}: $P(A\cup B)=P(A)+P(B)-P(A \cap B)$\\
+					\textbf{Multiplikasjonsregelen}: $P(A\cap B)=P(A)\cdot P(B|A)=P(B)\cdot P(A|B)$\\
+					\textbf{Betinga sannsynlighet}: $P(A|B)=\frac{P(A\cap B)}{P(B)}$\\
+					\textbf{Total sannsynlighet}: $P(A)=\sum_{i=1}^n P(B_i\cap A)=\sum_{i=1}^kP(B_i)\cdot P(A|B_i)$\\
+					\textbf{Bayes setning}: $P(B|A)=\frac{P(B)\cdot P(A|B)}{P(A)}$\\
+					\textbf{Tilfeller ved uavhengighet:}\\
+					$P(A\cap B)=P(A)\cdot P(B)$\\
+					$P(A|B)=A(A)$\\
+				}
+				\center\normalsize Forenklinger for lineærkombinasjoner\\
+				{\footnotesize\raggedright
+					$Var(aX+bY)=a^2Var(X)+b^2Var(Y)+2ab\cdot Cov(X,Y)$\\
+					Merk: hvis X og Y er uavhengige er $Cov(X,Y)=0$\\
+					$E(aX+b)=aE(X)+b$\\
+					\textbf{Tsjebysjeffs teorem}: Sannsynligheten for at verdien på en variabel $X$ ligger innafor $k$ avstander fra forventningsverdien er minst $1-\frac{1}{k^2}$\\
+					\textbf{Sannsynlighetsmaksimeringsfunksjonen}:\\
+					$L(\Theta)=\prod_{i=1}^n f(x_i,\Theta)$\\
+					Løses ved å:\\
+					1. Ta algoritmen av funksjonen\\
+					$\ln \left(\frac{a}{b}\right)=\ln(a)-\ln(b),\qquad \ln(ab)=\ln(a)+\ln(b)$\\
+					2. Deriver utrykker med hensyn på variabelen $\Theta$ oftest $\beta$\\
+					3. Sett utrykket lik $0$ og løs med hensyn på variabelen.\\
+					\textbf{Tilfeldig utvalg}:\\
+					Når et utvalg er tilfeldig, kan vi se på det som en mengde identiske og uavhengige observasjoner.\\
+					\textbf{QQ-plot}:\\
+					- Plotter utvalgskvantiler (Observasjonene ordna etter størrelse) mot teoretiske kvantiler (``Ideelle observasjoner'') fra aktuell fordeling\\
+					- Teoretiske kvantiler er gitt ver invers kumulativ fordeling ``jevnt spredte'' sannsynligheter mellom 0 og 1\\
+					- Om antatt fordeling stemmer skal plotter gi en tilnerma rett linje $x=y$\\
+				}
+			\end{block}
+		\end{column}
+		\begin{column}{.66\linewidth}
 		\end{column}
 	\end{columns}
 \end{frame}
