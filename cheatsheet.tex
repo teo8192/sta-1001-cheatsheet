@@ -163,6 +163,7 @@
 					$(u\cdot v)' = u'v + u\cdot v'$\\
 					$\left( \frac{u}{v}\right) = \frac{u'v - u\cdot v'}{v^2}$\\
 					$g(f(x))'=g'(f(x))\cdot f'(x)$\\
+					$\ln(x)'\frac{1}{x}'$\\
 					$\int \ln (x) \, dx=x\ln (x) -x + C$ \\
 					$u$ er et utrykk med $x$\\
 					$\int a^u \, dx = \frac{a^u}{u'\cdot \ln(a)} + C$\\
@@ -177,8 +178,7 @@
 					\textbf{Permutasjonsregelen (nPr)}\\
 					$n$ merka enheter, velger $k$ uten tilbakelegging, antall ordna utfall: $_nP_r=\frac{n!}{(n-k)!}$\\
 					\textbf{Kombinasjonsregelen}\\
-					$n$ merka enheter, velger $k$ uten tilbakelegging, antall ikke-ordna utfall: $_nC_r=\binom{n}{k}=\frac{n!}{(n-k)!k!}$\\
-					kake}
+					$n$ merka enheter, velger $k$ uten tilbakelegging, antall ikke-ordna utfall: $_nC_r=\binom{n}{k}=\frac{n!}{(n-k)!k!}$\\}
 			\end{block}
 		\end{column}
 		\begin{column}{.25\linewidth}
@@ -446,6 +446,27 @@
 					\maths{P(B)=P(X>2)=\int_2^3f(x)\,dx=\int_2^3\frac{2}{9}x\,dx\left[\frac{1}{9}x^2\right]_2^3=1-\frac{4}{9}=\frac{5}{9}\\
 						P(B|A)=\frac{P(B\cap A)}{P(A)}=\frac{P(A|B)P(B)}{P(A)}=\frac{1\cdot P(B)}{P(A)}=\frac{\frac{5}{9}}{\int_1^3\frac{1}{9}x\,dx}=\frac{5}{8}}
 					Vi ser at $P(B|A)\neq P(B)$, så $A$ og $B$ er ikke uavhengige}
+				\oppgave{Vi anntar at konsentrasjonen i en prøve $Y_i$, av volum $l_i$ liter har følgende fordeling:
+					\maths{Y_i\sim N\left(\mu,\frac{\sigma}{\sqrt l_i}\right)}
+					Nå er det tatt $n=5$ uavhengige prøver av ulik størrelse.\\
+					Sett opp en likelihoodfunksjon (sannsynlighetsmaksimeringsfunksjon) for de ukjente parameterne $\mu$ og $\sigma^2$.\\
+					Vis as sannsynlighetsmaksimeringsfunksjonen for $\mu$ og $\sigma^2$ blir
+					\maths{&\hat\mu=\frac{\sum_{i=1}^nl_iY_i}{\sum_{i=1}^nl_i},
+						&\text{og}&
+						&\hat\sigma^2=\frac{\sum_{i=1}^nl_i(Y_i-\hat\mu)^2}{n}}.}
+				{\maths{L(\mu, \sigma^2)
+						=\prod_{i=1}^nf(x_i;\mu,\sigma_i)
+						=\prod_{i=1}^n\frac{1}{\sqrt{2\pi}\frac{\sigma}{\sqrt l_i}}\exp\left(-\frac{(y_i-\mu)^2}{2\frac{\sigma^2}{l_i}}\right)\\
+						=\prod_{i=1}^n\frac{\sqrt l_i}{\sqrt{2\pi}\sigma}\exp\left(-\frac{l_i(y_i-\mu)^2}{2\sigma^2}\right)\\
+						=\frac{1}{(\sqrt{2\pi})^n}\frac{1}{(\sqrt{\sigma^2})^n}\exp\left(-\frac{1}{2\sigma^2}\sum_{i=1}^nl_i(y_i-\mu)^2\right)\prod_{i=1}^n\sqrt{l_i}}
+					Finner sannsynlighetsmaksimeringsfunksjonen på vanlig måte:
+					\maths{
+						\ln L&= -\frac{n}{2}\ln(2\pi)-\frac{n}{2}\ln(\sigma^2)-\frac{1}{2\sigma^2}\sum_{i=1}^nl_i(y_i-\mu)^2+\frac{1}{2}\ln\left(\sum_{i=1}^nl_i\right)&\\
+						\frac{\partial\ln L}{\partial\mu}&=-\frac{1}{2\sigma^2}\sum_{i=1}^n 2l_i(y_i-\mu)(-1)=0 \qquad\qquad\text{(kjerneregelen)}\\
+						&\Rightarrow \mu\sum_{i=1}^nl_i=\sum_{i=1}^nl_iy_i
+						\Rightarrow\hat\mu=\frac{\sum_{i=1}^nl_iY_i}{\sum_{i=1}^nl_i}\\
+						\frac{\partial \ln L}{\partial \sigma^2}&=
+					}.}
 			\end{block}
 		\end{column}
 		\begin{column}{.33\linewidth}
