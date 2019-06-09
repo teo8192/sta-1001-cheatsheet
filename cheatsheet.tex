@@ -163,7 +163,7 @@
 					$(u\cdot v)' = u'v + u\cdot v'$\\
 					$\left( \frac{u}{v}\right) = \frac{u'v - u\cdot v'}{v^2}$\\
 					$g(f(x))'=g'(f(x))\cdot f'(x)$\\
-					$\ln(x)'\frac{1}{x}'$\\
+					$\ln(x)'=\frac{1}{x}$\\
 					$\int \ln (x) \, dx=x\ln (x) -x + C$ \\
 					$u$ er et utrykk med $x$\\
 					$\int a^u \, dx = \frac{a^u}{u'\cdot \ln(a)} + C$\\
@@ -465,7 +465,9 @@
 						\frac{\partial\ln L}{\partial\mu}&=-\frac{1}{2\sigma^2}\sum_{i=1}^n 2l_i(y_i-\mu)(-1)=0 \qquad\qquad\text{(kjerneregelen)}\\
 						&\Rightarrow \mu\sum_{i=1}^nl_i=\sum_{i=1}^nl_iy_i
 						\Rightarrow\hat\mu=\frac{\sum_{i=1}^nl_iY_i}{\sum_{i=1}^nl_i}\\
-						\frac{\partial \ln L}{\partial \sigma^2}&=
+						\frac{\partial \ln L}{\partial \sigma^2}&=-\frac{n}{2\sigma^2}+\frac{1}{2\sigma^4}\sum_{i=1}^nl_i(y_i-\mu)^2=0\\
+						&\Rightarrow \frac{1}{\sigma^2}\sum_{i=1}^nl_i(y_i-\mu)^2=n\\
+						&\Rightarrow \hat\sigma^2=\frac{\sum_{i=1}^nl_i(Y_i-\hat\mu)^2}{n}
 					}.}
 			\end{block}
 		\end{column}
