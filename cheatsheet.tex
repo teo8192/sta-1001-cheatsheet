@@ -25,6 +25,7 @@
 	{\footnotesize\raggedright \textit{#1}\\#2\\}}
 \newcommand{\deloppgave}[2]
 {\footnotesize\raggedright \textit{#1}\\#2\\}
+\newcommand{\matte}[1]{\vspace{-3mm}\begin{align*}#1\end{align*}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 \begin{document}
@@ -424,7 +425,16 @@
 					Vi vil undersøke om det er grunnlag for å påstå at en reell rekkevidde er lavere enn dette.\\
 					Sett opp hypoteser og testobservator, og utfør en test for problemstillinga over med signifikansnivå $5\%$.\\
 					Finn både forkastningsområde og (tilnærma) p-verdi.
-					Hva blir konklusjonen?}{kake er digg}
+					Hva blir konklusjonen?}
+				{Vi går ut ifra at observatorene i et tilfeldig utvalg $X_1,\ldots,X_{15}$ fra en normalfordelt populasjon med forventning $\mu$ og standardavvik $\sigma$.
+					Vi vil teste hypotesene:
+					\matte{&H_0: \mu=210 &H_1:\mu<210}
+					Ettersom $\sigma$ er ukjent og maa estimeres fra data ved $S$ blir dette en T-test, testobservator:
+					\matte{T=\frac{\overline X - \mu_0}{\frac{S}{\sqrt n}}}
+					som er \textit{t-fordelt} med $n-1=14$ firhetsgrader når $H_0$ er sann.
+					Insett data:
+					\matte{t=\frac{201.067-210}{\frac{10.539}{\sqrt n}}=-3.282}
+					Forkaster $H_0$ om $t<t_{0.02,14}=-1.761$}
 			\end{block}
 		\end{column}
 		\begin{column}{.33\linewidth}
