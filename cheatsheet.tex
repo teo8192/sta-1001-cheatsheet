@@ -29,6 +29,8 @@
 	\raggedright \textit{#1}\\#2\\}
 \newcommand{\matte}[1]{\vspace{-3mm}\begin{align*}#1\end{align*}}
 \newcommand{\ol}[0]{\overline}
+\newcommand{\tema}[2]{\footnotesize\raggedright\textbf{#1}\\{#2}\par}
+\newcommand{\subsect}[1]{\center\normalsize{#1}\\}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 \begin{document}
@@ -395,7 +397,33 @@
 					- Teoretiske kvantiler er gitt ver invers kumulativ fordeling ``jevnt spredte'' sannsynligheter mellom 0 og 1\\
 					- Om antatt fordeling stemmer skal plotter gi en tilnerma rett linje $x=y$\\
 				}
+				\subsect{Enkel linær regresjon}
+				{\footnotesize\raggedright Har observasjonspar $(x_1,y_1),\ldots,(x_n,y_n)$.\\}
+				\tema{Regresjonsmodellen}
+				{\matte{&Y_i=\beta_0+\beta_1x_i+\epsilon_i, &i=1,\ldots,n}
+					Forutsetningene er at
+					\matte{&E(\epsilon_i)=0,&Var(\epsilon_i)=\sigma^2,& &i=1,\ldots,n}
+					og $\epsilon_1,\ldots,\epsilon_n$ er inbyrdes uavhengige. Dette medfører at
+					\matte{&E(Y_i)=\mu_{Y|x_i}=\beta_0+\beta_1x_i,&Var(Y_i)=\sigma_{Y|x_i}^2=\sigma^2,& &i=1,\ldots,n}
+					der $Y_1,\ldots,Y_n$ også er innbyrdes uavhengige.
+				}
+				\tema{MKM}
+				{Bruker miste kvadrat-metoden til å estimere $\beta_0$ og $\beta_1$ fra data for å få ei estimert (tilpassa) regresjonslinje for forventningslinja $\beta_0+\beta_1x$:
+					\matte{\hat y=b_0+b_1x}
+					MKM baserer seg på å minimere
+					\matte{SSE=\sum_{i=1}^n(y_i-\hat y_i)^2=\sum_{i=1}^n(y_i-b_0-b_1x_i)^2}
+					Gir estimatorer
+					\matte{B_1=\frac{\sum_{i=1}^n(x_i-\bar x)(Y_i-\overline{Y})}{\sum_{i=1}^n(x_i-\overline{x})^2}=\frac{\sum_{i=1}^n(x_i-\bar x)Y_i}{\sum_{i=1}^n(x_i-\overline{x})^2}, &B_0=\overline{Y}-B_1\overline{x}}
+					der
+					\matte{&E(B_1)=\beta_1, &Var(B_1)=\frac{\sigma^2}{\sum_{i=1}^n(x_i-\overline x)^2}\\
+						&E(B_0)=\beta_0, &Var(B_0)=\frac{\sigma^2\sum_{i=1}^nx_i^2}{n\sum_{i=1}^n(x_i-\overline{x})^2}}
+					I tillegg har vi (forventningsrett) estimator for $\sigma^2$:
+					\matte{S^2=\frac{SSE}{n-2}=\frac{\sum_{i=1}^n(Y_i-\hat Y_i)^2}{n-2}=\frac{\sum_{i=1}^n(Y_i-B_0-B_1x_i)^2}{n-2}}}
+				\tema{Parameterinferens}
+				{Om vi anntar at feilledda er normalfordelte}
 			\end{block}
+		\end{column}
+		\begin{column}{.33\linewidth}
 			\begin{block}{Løningsforslag}
 				\oppgave{Ola samler spillekort.
 					Ønsker et spesifikt spillekort ($A$).
@@ -493,10 +521,6 @@
 					Vi kan med $95\%$ sannsynlighet konkludre at den sanne forventa rekkeviddedifferansen ligger innenfor intervallgrensene.
 					Da $0$ er innafor intervallet vet vi og at en tosidig test ($5\%$ signifikansnivå) ikke ville forkasta $H_0$ om ingen forskjell, kan ikke konkludere at forventa rekkevidde er ulike.
 				}
-			\end{block}
-		\end{column}
-		\begin{column}{.33\linewidth}
-			\begin{block}{}
 			\end{block}
 		\end{column}
 	\end{columns}
