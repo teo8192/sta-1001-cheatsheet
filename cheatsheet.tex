@@ -396,67 +396,7 @@
 					- Om antatt fordeling stemmer skal plotter gi en tilnerma rett linje $x=y$\\
 				}
 			\end{block}
-		\end{column}
-		\begin{column}{.33\linewidth}
-			\begin{block}{Løsningsforslag}
-				\oppgave{Vi skal se på rekkevidde for en elektrisk bilmodell (kjørelengde fra betteriet er fullt til tomt).
-					Det blir påståt at bilprodusenter oppgir urealistisk lang rekkevidde, derfor lar vi $n=15$ tilfeldig valgte sjåfører bruke bilen til normal kjøring til batteriet er tomt, for hver sjåfør er kjørelengda (km) registrert.
-					Vi går ut ifra at disse kjørelengdene er et tilfeldig utvalg fra en populasjon med forventning $\mu$ ($\hat \mu=201.0667$) og varians $\sigma^2$ ($\hat \sigma^2 = 111.0667$).
-					Produsenten av bilmodellen påstår er forventa rekkevidde er under tilsvarende forhold $210$ (km).
-					Vi vil undersøke om det er grunnlag for å påstå at en reell rekkevidde er lavere enn dette.\\
-					Sett opp hypoteser og testobservator, og utfør en test for problemstillinga over med signifikansnivå $5\%$.\\
-					Finn både forkastningsområde og (tilnærma) p-verdi.
-					Hva blir konklusjonen?}
-				{Vi går ut ifra at observatorene i et tilfeldig utvalg $X_1,\ldots,X_{15}$ fra en normalfordelt populasjon med forventning $\mu$ og standardavvik $\sigma$.
-					Vi vil teste hypotesene:
-					\matte{&H_0: \mu=210 &H_1:\mu<210}
-					Ettersom $\sigma$ er ukjent og maa estimeres fra data ved $S$ blir dette en T-test, testobservator:
-					\matte{T=\frac{\overline X - \mu_0}{\frac{S}{\sqrt n}}}
-					som er \textit{t-fordelt} med $n-1=14$ firhetsgrader når $H_0$ er sann.
-					Insett data:
-					\matte{t=\frac{201.067-210}{\frac{10.539}{\sqrt n}}=-3.282}
-					Forkaster $H_0$ om $t<t_{0.02,14}=-1.761$. Så $H_0$ blir forkasta, og vi kan påstå at forventnia rekkevidde $\mu$ er under 210km.\\
-					Kan finne \textit{p-verdien} fra:
-					\matte{\text{p-verdi}=P(T_{14}<-3.282)=\begin{cases}
-							<0.005\\
-							>0.001
-					\end{cases}}
-				Så fra tabellen kan vi se at p-verdien er mellom $0.1\%$ og $0.5\%$.
-				Da dette er lavere enn signifikansnivået på $0.5\%$ blir $H_0$ forkasta.}
-			\deloppgave{Vi er og interresert i hvor mye rekkevidda kan variere.\\
-				Utled et $90\%$-konfidensintervall for variansen $\sigma^2$.\\
-				Finn intervallestimatet fra observatorene. Hva kan du konkludere fra intervallet?}{Utleder et $90\%$-konfidensintervall fra variansen, $\sigma^2$, bruker at vi kjenner fordelinga for den standariserte observatoren
-				\matte{\frac{(n-1)S^2}{\sigma^2}\sim \chi_{n-1}^2&\\
-					P\left(\chi_{0.95}^2<\frac{(n-1)S^2}{\sigma^2}<\chi_{0.05}^2\right)&=0.90\\
-					P\left(\frac{\chi_{0.95}^2}{(n-1)S^2}<\frac{1}{\sigma^2}<\frac{\chi_{0.05}^2}{(n-1)S^2}\right)&=0.90\\
-					P\left(\frac{(n-1)S^2}{\chi_{0.05}^2}<\sigma^2<\frac{(n-1)S^2}{\chi_{0.95}^2}\right)&=0.90}
-				Intervallestimat fra observasjonene og $n-1=14$ frihetsgrader
-				\matte{\left(\frac{(n-1)\cdot s^2}{\chi_{0.05}^2},\frac{(n-1)\cdot s^2}{\chi_{0.05}^2}\right) = \left(\frac{(15-1)\cdot 111.067}{23.685},\frac{(15-1)\cdot 111.067}{6.571}\right)\\=(65.65,236.65)}
-				Med $90\%$ sannsynlighet for at intervallet inneholder den sanne verdien for variansen $\sigma^2$.
-				Merk at fra dette kan vi og lage et $90\%$-konfidensintervall for standardavviket $\sigma$:
-				\matte{(\sqrt{65.65},\sqrt{236.65})=(8.10,15.38)}
-			}
-			\deloppgave{Vi ønsker og å sammenligne modellem med en annen bilmodemm.
-				Vi lar ei anna grupe $n_2=15$ sjåfører bruke denne andre modellen. Resultater: $\hat \mu=184.467, \hat \sigma^2=115.124$. Vi går ut ifra at variansen for rekkevidde er lik for de to ulike populasjonene.\\
-				Gør de nødvendige forutsetningene for de to utvalga, og regn ut et estimert $95\%$-konfidensintervall for forskjell i forventa rekkevidde mellom de to modellene.
-				Hva kan du konkludere fra dette intervallet?}
-			{Vi går ut ifra at vi har to tilfeldige utvalg $X_{1,1},\ldots,X_{1,15}$ fra en normalfordelt populasjon med forventning $\mu_1$, og $X_{2,1},\ldots,X_{2,15}$ fra en normalfordelt populasjon med forventning $\mu_2$.
-				Vi går og utifra at de to utvalga er uavhengige.
-				I teksten er det gjort en anntakelse om at variansen $\sigma^2$ er den samme for de to populasjonene.\\
-				Et $95\%$-konfidensintervall for $\mu_1-\mu_2$ er da gitt ved
-				\matte{\left(\ol X_1 -\ol X_2-t_{0.025}\cdot S_p\cdot\sqrt{\frac{1}{n_1}+\frac{1}{n_2}},\ol X_1 -\ol X_2+t_{0.025}\cdot S_p\cdot\sqrt{\frac{1}{n_1}+\frac{1}{n_2}} \right)}
-			Estimatet for den felles variansen blir
-			\matte{s_p^2=\frac{s_1^2\cdot(n_1-1)+s_2^2\cdot(n_2-1)}{n_1+n_2-2}=\frac{111.067\cdot 14 + 115.124 \cdot 14}{15+15-2}}
-			Dermed blir intervallestimatet med insatte observasjoner:
-			\matte{201.067-194.467\pm2.048\cdot\sqrt{113.095}\cdot\sqrt{\frac{1}{15}+\frac{1}{15}}=(-1.353,14.553)}
-			Her er det brukt $n_1+n_2-2=28$ frihetsgradet i t-fordelinga.\\
-			Vi kan med $95\%$ sannsynlighet konkludre at den sanne forventa rekkeviddedifferansen ligger innenfor intervallgrensene.
-			Da $0$ er innafor intervallet vet vi og at en tosidig test ($5\%$ signifikansnivå) ikke ville forkasta $H_0$ om ingen forskjell, kan ikke konkludere at forventa rekkevidde er ulike.
-		}
-			\end{block}
-		\end{column}
-		\begin{column}{.33\linewidth}
-			\begin{block}{}
+			\begin{block}{Løningsforslag}
 				\oppgave{Ola samler spillekort.
 					Ønsker et spesifikt spillekort ($A$).
 					$X$ er anntall kort han kjøper før han får dette.
@@ -480,6 +420,83 @@
 					$E(I_i)=1\cdot P(I_i=1)+0\cdot P(I_i=0)=P(I_i=1)=P(Y\geq 1)=0.878$\\
 					La tallet på ulike kort være $N=\sum_i I_i$. Da blir\\
 					$E(N)=E(\sum_i I_i)=\sum_i E(I_i)=\sum_i 0.878 = 10 \cdot 0.878 = 8.78$ }
+				\oppgave{Fordelinga til en kontinuerlig stokastisk variabel $X$ er gitt ved følgende sannsynlighetstetthetsfunksjon:
+					\matte{f(x)=\begin{cases}
+							\frac{2}{9}x,&0<x<3\\
+							0,&\text{ellers}
+						\end{cases}}
+					Vi er interresert i følgende hendelser:
+					\matte{&X=\{X>1\} &\text{og}& &B=\{X>2\}}
+					er disse hendelsene disjunkte?\\
+					Hva er sannsynligheten for $B$?\\
+					Hva er sannsynligheten for $B$ gitt $A$?\\
+					Er disse hendelsene uavhengige?}
+				{Nei, $A$ og $B$ er ikke disjunkte, det er mulig at $X>1$ sammtidig som $X>2$ ($X=2.5$)
+					\matte{P(B)=P(X>2)=\int_2^3f(x)\,dx=\int_2^3\frac{2}{9}x\,dx\left[\frac{1}{9}x^2\right]_2^3=1-\frac{4}{9}=\frac{5}{9}\\
+						P(B|A)=\frac{P(B\cap A)}{P(A)}=\frac{P(A|B)P(B)}{P(A)}=\frac{1\cdot P(B)}{P(A)}=\frac{\frac{5}{9}}{\int_1^3\frac{1}{9}x\,dx}=\frac{5}{8}}
+					Vi ser at $P(B|A)\neq P(B)$, så $A$ og $B$ er ikke uavhengige}
+			\end{block}
+		\end{column}
+		\begin{column}{.33\linewidth}
+			\begin{block}{}
+				\oppgave{Vi skal se på rekkevidde for en elektrisk bilmodell (kjørelengde fra betteriet er fullt til tomt).
+					Det blir påståt at bilprodusenter oppgir urealistisk lang rekkevidde, derfor lar vi $n=15$ tilfeldig valgte sjåfører bruke bilen til normal kjøring til batteriet er tomt, for hver sjåfør er kjørelengda (km) registrert.
+					Vi går ut ifra at disse kjørelengdene er et tilfeldig utvalg fra en populasjon med forventning $\mu$ ($\hat \mu=201.0667$) og varians $\sigma^2$ ($\hat \sigma^2 = 111.0667$).
+					Produsenten av bilmodellen påstår er forventa rekkevidde er under tilsvarende forhold $210$ (km).
+					Vi vil undersøke om det er grunnlag for å påstå at en reell rekkevidde er lavere enn dette.\\
+					Sett opp hypoteser og testobservator, og utfør en test for problemstillinga over med signifikansnivå $5\%$.\\
+					Finn både forkastningsområde og (tilnærma) p-verdi.
+					Hva blir konklusjonen?}
+				{Vi går ut ifra at observatorene i et tilfeldig utvalg $X_1,\ldots,X_{15}$ fra en normalfordelt populasjon med forventning $\mu$ og standardavvik $\sigma$.
+					Vi vil teste hypotesene:
+					\matte{&H_0: \mu=210 &H_1:\mu<210}
+					Ettersom $\sigma$ er ukjent og maa estimeres fra data ved $S$ blir dette en T-test, testobservator:
+					\matte{T=\frac{\overline X - \mu_0}{\frac{S}{\sqrt n}}}
+					som er \textit{t-fordelt} med $n-1=14$ firhetsgrader når $H_0$ er sann.
+					Insett data:
+					\matte{t=\frac{201.067-210}{\frac{10.539}{\sqrt n}}=-3.282}
+					Forkaster $H_0$ om $t<t_{0.02,14}=-1.761$. Så $H_0$ blir forkasta, og vi kan påstå at forventnia rekkevidde $\mu$ er under 210km.\\
+					Kan finne \textit{p-verdien} fra:
+					\matte{\text{p-verdi}=P(T_{14}<-3.282)=\begin{cases}
+							<0.005\\
+							>0.001
+						\end{cases}}
+					Så fra tabellen kan vi se at p-verdien er mellom $0.1\%$ og $0.5\%$.
+					Da dette er lavere enn signifikansnivået på $0.5\%$ blir $H_0$ forkasta.}
+				\deloppgave{Vi er og interresert i hvor mye rekkevidda kan variere.\\
+					Utled et $90\%$-konfidensintervall for variansen $\sigma^2$.\\
+					Finn intervallestimatet fra observatorene. Hva kan du konkludere fra intervallet?}{Utleder et $90\%$-konfidensintervall fra variansen, $\sigma^2$, bruker at vi kjenner fordelinga for den standariserte observatoren
+					\matte{\frac{(n-1)S^2}{\sigma^2}\sim \chi_{n-1}^2&\\
+						P\left(\chi_{0.95}^2<\frac{(n-1)S^2}{\sigma^2}<\chi_{0.05}^2\right)&=0.90\\
+						P\left(\frac{\chi_{0.95}^2}{(n-1)S^2}<\frac{1}{\sigma^2}<\frac{\chi_{0.05}^2}{(n-1)S^2}\right)&=0.90\\
+						P\left(\frac{(n-1)S^2}{\chi_{0.05}^2}<\sigma^2<\frac{(n-1)S^2}{\chi_{0.95}^2}\right)&=0.90}
+					Intervallestimat fra observasjonene og $n-1=14$ frihetsgrader
+					\matte{\left(\frac{(n-1)\cdot s^2}{\chi_{0.05}^2},\frac{(n-1)\cdot s^2}{\chi_{0.05}^2}\right) = \left(\frac{(15-1)\cdot 111.067}{23.685},\frac{(15-1)\cdot 111.067}{6.571}\right)\\=(65.65,236.65)}
+					Med $90\%$ sannsynlighet for at intervallet inneholder den sanne verdien for variansen $\sigma^2$.
+					Merk at fra dette kan vi og lage et $90\%$-konfidensintervall for standardavviket $\sigma$:
+					\matte{(\sqrt{65.65},\sqrt{236.65})=(8.10,15.38)}
+				}
+				\deloppgave{Vi ønsker og å sammenligne modellem med en annen bilmodemm.
+					Vi lar ei anna grupe $n_2=15$ sjåfører bruke denne andre modellen. Resultater: $\hat \mu=184.467, \hat \sigma^2=115.124$. Vi går ut ifra at variansen for rekkevidde er lik for de to ulike populasjonene.\\
+					Gør de nødvendige forutsetningene for de to utvalga, og regn ut et estimert $95\%$-konfidensintervall for forskjell i forventa rekkevidde mellom de to modellene.
+					Hva kan du konkludere fra dette intervallet?}
+				{Vi går ut ifra at vi har to tilfeldige utvalg $X_{1,1},\ldots,X_{1,15}$ fra en normalfordelt populasjon med forventning $\mu_1$, og $X_{2,1},\ldots,X_{2,15}$ fra en normalfordelt populasjon med forventning $\mu_2$.
+					Vi går og utifra at de to utvalga er uavhengige.
+					I teksten er det gjort en anntakelse om at variansen $\sigma^2$ er den samme for de to populasjonene.\\
+					Et $95\%$-konfidensintervall for $\mu_1-\mu_2$ er da gitt ved
+					\matte{\left(\ol X_1 -\ol X_2-t_{0.025}\cdot S_p\cdot\sqrt{\frac{1}{n_1}+\frac{1}{n_2}},\ol X_1 -\ol X_2+t_{0.025}\cdot S_p\cdot\sqrt{\frac{1}{n_1}+\frac{1}{n_2}} \right)}
+					Estimatet for den felles variansen blir
+					\matte{s_p^2=\frac{s_1^2\cdot(n_1-1)+s_2^2\cdot(n_2-1)}{n_1+n_2-2}=\frac{111.067\cdot 14 + 115.124 \cdot 14}{15+15-2}}
+					Dermed blir intervallestimatet med insatte observasjoner:
+					\matte{201.067-194.467\pm2.048\cdot\sqrt{113.095}\cdot\sqrt{\frac{1}{15}+\frac{1}{15}}=(-1.353,14.553)}
+					Her er det brukt $n_1+n_2-2=28$ frihetsgradet i t-fordelinga.\\
+					Vi kan med $95\%$ sannsynlighet konkludre at den sanne forventa rekkeviddedifferansen ligger innenfor intervallgrensene.
+					Da $0$ er innafor intervallet vet vi og at en tosidig test ($5\%$ signifikansnivå) ikke ville forkasta $H_0$ om ingen forskjell, kan ikke konkludere at forventa rekkevidde er ulike.
+				}
+			\end{block}
+		\end{column}
+		\begin{column}{.33\linewidth}
+			\begin{block}{}
 			\end{block}
 		\end{column}
 	\end{columns}
