@@ -4,6 +4,7 @@
 	%  \usetheme{Berlin}
 	%\usetheme{Dreuw}
 }
+%\usepackage{fontspec}
 \usepackage{times}
 \usepackage{amsmath,amsthm, amssymb, latexsym}
 %\boldmath
@@ -24,8 +25,10 @@
 {\center\normalsize Oppgave\\
 	{\footnotesize\raggedright \textit{#1}\\#2\\}}
 \newcommand{\deloppgave}[2]
-{\footnotesize\raggedright \textit{#1}\\#2\\}
+{\footnotesize\center\textbf{Deloppgave}\\
+	\raggedright \textit{#1}\\#2\\}
 \newcommand{\matte}[1]{\vspace{-3mm}\begin{align*}#1\end{align*}}
+\newcommand{\ol}[0]{\overline}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 \begin{document}
@@ -395,29 +398,6 @@
 		\end{column}
 		\begin{column}{.33\linewidth}
 			\begin{block}{Løsningsforslag}
-				\oppgave{Ola samler spillekort.
-					Ønsker et spesifikt spillekort ($A$).
-					$X$ er anntall kort han kjøper før han får dette.
-					Det er $10$ forskjellige spillekort i serien.
-					Han kjøper pakker av kort med $n=20$ kort i hver pakke.
-					Hver pakke er uavhengig.\\
-					Hva er fordelinga for antall kort i pakka som er med spiller $A$?\\
-					Hva er sannsynligheten for at Ola får minst ett kort med spiller $A$ i pakka?\\
-					Hva er forventa antall ulike spillekort i pakka?}
-				{Ola gjør $n=20$ kjøp.
-					Resultatet av hvert kjøp er uavhengige, og sannsynligheten for suksess (kort $A$) er lik $\frac{1}{10}$ for hvert kjøp.
-					Da blir $Y=$ tall på kort $A$, binomisk fordelt med $n=20$ delforsøk og sannsynlighet $p=\frac{1}{10}$:\\
-					$Y \sim \text{binom}\left(n=20,p=\frac{1}{10}\right)$\\
-					$P(Y\geq 1) = 1-P(X=0)=1-\binom{20}{0}\left(\frac{1}{10}\right)^0\left(1-\frac{1}{10}\right)^{20}=1-0.122=0.878$\\
-					Definerer korttypene $i\in \{A,B,\cdots,J\}$:\\
-					$I_i=\begin{cases}
-						1, &\text{minst ett kort av typen $i$.}\\
-						0, &\text{ingen kort av typen $i$}
-					\end{cases}$\\
-					Da blir \\
-					$E(I_i)=1\cdot P(I_i=1)+0\cdot P(I_i=0)=P(I_i=1)=P(Y\geq 1)=0.878$\\
-					La tallet på ulike kort være $N=\sum_i I_i$. Da blir\\
-					$E(N)=E(\sum_i I_i)=\sum_i E(I_i)=\sum_i 0.878 = 10 \cdot 0.878 = 8.78$ }
 				\oppgave{Vi skal se på rekkevidde for en elektrisk bilmodell (kjørelengde fra betteriet er fullt til tomt).
 					Det blir påståt at bilprodusenter oppgir urealistisk lang rekkevidde, derfor lar vi $n=15$ tilfeldig valgte sjåfører bruke bilen til normal kjøring til batteriet er tomt, for hver sjåfør er kjørelengda (km) registrert.
 					Vi går ut ifra at disse kjørelengdene er et tilfeldig utvalg fra en populasjon med forventning $\mu$ ($\hat \mu=201.0667$) og varians $\sigma^2$ ($\hat \sigma^2 = 111.0667$).
@@ -448,11 +428,58 @@
 				\matte{\frac{(n-1)S^2}{\sigma^2}\sim \chi_{n-1}^2&\\
 					P\left(\chi_{0.95}^2<\frac{(n-1)S^2}{\sigma^2}<\chi_{0.05}^2\right)&=0.90\\
 					P\left(\frac{\chi_{0.95}^2}{(n-1)S^2}<\frac{1}{\sigma^2}<\frac{\chi_{0.05}^2}{(n-1)S^2}\right)&=0.90\\
-					P\left(\frac{(n-1)S^2}{\chi_{0.05}^2}<\frac{1}{\sigma^2}<\frac{(n-1)S^2}{\chi_{0.95}^2}\right)&=0.90
-				}}
+					P\left(\frac{(n-1)S^2}{\chi_{0.05}^2}<\sigma^2<\frac{(n-1)S^2}{\chi_{0.95}^2}\right)&=0.90}
+				Intervallestimat fra observasjonene og $n-1=14$ frihetsgrader
+				\matte{\left(\frac{(n-1)\cdot s^2}{\chi_{0.05}^2},\frac{(n-1)\cdot s^2}{\chi_{0.05}^2}\right) = \left(\frac{(15-1)\cdot 111.067}{23.685},\frac{(15-1)\cdot 111.067}{6.571}\right)\\=(65.65,236.65)}
+				Med $90\%$ sannsynlighet for at intervallet inneholder den sanne verdien for variansen $\sigma^2$.
+				Merk at fra dette kan vi og lage et $90\%$-konfidensintervall for standardavviket $\sigma$:
+				\matte{(\sqrt{65.65},\sqrt{236.65})=(8.10,15.38)}
+			}
+			\deloppgave{Vi ønsker og å sammenligne modellem med en annen bilmodemm.
+				Vi lar ei anna grupe $n_2=15$ sjåfører bruke denne andre modellen. Resultater: $\hat \mu=184.467, \hat \sigma^2=115.124$. Vi går ut ifra at variansen for rekkevidde er lik for de to ulike populasjonene.\\
+				Gør de nødvendige forutsetningene for de to utvalga, og regn ut et estimert $95\%$-konfidensintervall for forskjell i forventa rekkevidde mellom de to modellene.
+				Hva kan du konkludere fra dette intervallet?}
+			{Vi går ut ifra at vi har to tilfeldige utvalg $X_{1,1},\ldots,X_{1,15}$ fra en normalfordelt populasjon med forventning $\mu_1$, og $X_{2,1},\ldots,X_{2,15}$ fra en normalfordelt populasjon med forventning $\mu_2$.
+				Vi går og utifra at de to utvalga er uavhengige.
+				I teksten er det gjort en anntakelse om at variansen $\sigma^2$ er den samme for de to populasjonene.\\
+				Et $95\%$-konfidensintervall for $\mu_1-\mu_2$ er da gitt ved
+				\matte{\left(\ol X_1 -\ol X_2-t_{0.025}\cdot S_p\cdot\sqrt{\frac{1}{n_1}+\frac{1}{n_2}},\ol X_1 -\ol X_2+t_{0.025}\cdot S_p\cdot\sqrt{\frac{1}{n_1}+\frac{1}{n_2}} \right)}
+			Estimatet for den felles variansen blir
+			\matte{s_p^2=\frac{s_1^2\cdot(n_1-1)+s_2^2\cdot(n_2-1)}{n_1+n_2-2}=\frac{111.067\cdot 14 + 115.124 \cdot 14}{15+15-2}}
+			Dermed blir intervallestimatet med insatte observasjoner:
+			\matte{201.067-194.467\pm2.048\cdot\sqrt{113.095}\cdot\sqrt{\frac{1}{15}+\frac{1}{15}}=(-1.353,14.553)}
+			Her er det brukt $n_1+n_2-2=28$ frihetsgradet i t-fordelinga.\\
+			Vi kan med $95\%$ sannsynlighet konkludre at den sanne forventa rekkeviddedifferansen ligger innenfor intervallgrensene.
+			Da $0$ er innafor intervallet vet vi og at en tosidig test ($5\%$ signifikansnivå) ikke ville forkasta $H_0$ om ingen forskjell, kan ikke konkludere at forventa rekkevidde er ulike.
+		}
 			\end{block}
 		\end{column}
 		\begin{column}{.33\linewidth}
+			\begin{block}{}
+				\oppgave{Ola samler spillekort.
+					Ønsker et spesifikt spillekort ($A$).
+					$X$ er anntall kort han kjøper før han får dette.
+					Det er $10$ forskjellige spillekort i serien.
+					Han kjøper pakker av kort med $n=20$ kort i hver pakke.
+					Hver pakke er uavhengig.\\
+					Hva er fordelinga for antall kort i pakka som er med spiller $A$?\\
+					Hva er sannsynligheten for at Ola får minst ett kort med spiller $A$ i pakka?\\
+					Hva er forventa antall ulike spillekort i pakka?}
+				{Ola gjør $n=20$ kjøp.
+					Resultatet av hvert kjøp er uavhengige, og sannsynligheten for suksess (kort $A$) er lik $\frac{1}{10}$ for hvert kjøp.
+					Da blir $Y=$ tall på kort $A$, binomisk fordelt med $n=20$ delforsøk og sannsynlighet $p=\frac{1}{10}$:\\
+					$Y \sim \text{binom}\left(n=20,p=\frac{1}{10}\right)$\\
+					$P(Y\geq 1) = 1-P(X=0)=1-\binom{20}{0}\left(\frac{1}{10}\right)^0\left(1-\frac{1}{10}\right)^{20}=1-0.122=0.878$\\
+					Definerer korttypene $i\in \{A,B,\cdots,J\}$:\\
+					$I_i=\begin{cases}
+						1, &\text{minst ett kort av typen $i$.}\\
+						0, &\text{ingen kort av typen $i$}
+					\end{cases}$\\
+					Da blir \\
+					$E(I_i)=1\cdot P(I_i=1)+0\cdot P(I_i=0)=P(I_i=1)=P(Y\geq 1)=0.878$\\
+					La tallet på ulike kort være $N=\sum_i I_i$. Da blir\\
+					$E(N)=E(\sum_i I_i)=\sum_i E(I_i)=\sum_i 0.878 = 10 \cdot 0.878 = 8.78$ }
+			\end{block}
 		\end{column}
 	\end{columns}
 \end{frame}
