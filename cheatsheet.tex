@@ -434,7 +434,22 @@
 					som er \textit{t-fordelt} med $n-1=14$ firhetsgrader når $H_0$ er sann.
 					Insett data:
 					\matte{t=\frac{201.067-210}{\frac{10.539}{\sqrt n}}=-3.282}
-					Forkaster $H_0$ om $t<t_{0.02,14}=-1.761$. Saa $H_0$ blir forkasta, og vi kan paastaa at forventnia rekkevidde $\mu$ er under 210km.}
+					Forkaster $H_0$ om $t<t_{0.02,14}=-1.761$. Så $H_0$ blir forkasta, og vi kan påstå at forventnia rekkevidde $\mu$ er under 210km.\\
+					Kan finne \textit{p-verdien} fra:
+					\matte{\text{p-verdi}=P(T_{14}<-3.282)=\begin{cases}
+							<0.005\\
+							>0.001
+					\end{cases}}
+				Så fra tabellen kan vi se at p-verdien er mellom $0.1\%$ og $0.5\%$.
+				Da dette er lavere enn signifikansnivået på $0.5\%$ blir $H_0$ forkasta.}
+			\deloppgave{Vi er og interresert i hvor mye rekkevidda kan variere.\\
+				Utled et $90\%$-konfidensintervall for variansen $\sigma^2$.\\
+				Finn intervallestimatet fra observatorene. Hva kan du konkludere fra intervallet?}{Utleder et $90\%$-konfidensintervall fra variansen, $\sigma^2$, bruker at vi kjenner fordelinga for den standariserte observatoren
+				\matte{\frac{(n-1)S^2}{\sigma^2}\sim \chi_{n-1}^2&\\
+					P\left(\chi_{0.95}^2<\frac{(n-1)S^2}{\sigma^2}<\chi_{0.05}^2\right)&=0.90\\
+					P\left(\frac{\chi_{0.95}^2}{(n-1)S^2}<\frac{1}{\sigma^2}<\frac{\chi_{0.05}^2}{(n-1)S^2}\right)&=0.90\\
+					P\left(\frac{(n-1)S^2}{\chi_{0.05}^2}<\frac{1}{\sigma^2}<\frac{(n-1)S^2}{\chi_{0.95}^2}\right)&=0.90
+				}}
 			\end{block}
 		\end{column}
 		\begin{column}{.33\linewidth}
