@@ -17,7 +17,12 @@
 %\author[]{Teo}
 %\institute{Inf}
 %\date{}
-
+%\newenvironment{oppgave}
+%{\footnotesize\raggedright}
+%{\normalsize}
+\newcommand{\oppgave}[2]
+{\center\normalsize Oppgave\\
+	{\footnotesize\raggedright \textit{#1}\\#2}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 \begin{document}
@@ -387,20 +392,18 @@
 		\end{column}
 		\begin{column}{.33\linewidth}
 			\begin{block}{Løsningsforslag}
-				\center\normalsize Oppgave\\
-				{\footnotesize\raggedright
-					\textit{Ola samler spillekort.
-						Ønsker et spesifikt spillekort ($A$).
-						$X$ er anntall kort han kjøper før han får dette.
-						Det er $10$ forskjellige spillekort i serien.
-						Han kjøper pakker av kort med $n=20$ kort i hver pakke.
-						Hver pakke er uavhengig.\\
-						Hva er fordelinga for antall kort i pakka som er med spiller $A$?\\
-						Hva er sannsynligheten for at Ola får minst ett kort med spiller $A$ i pakka?\\
-						Hva er forventa antall ulike spillekort i pakka?}\par
-					Ola gjør $n=20$ kjøp.
+				\oppgave{Ola samler spillekort.
+					Ønsker et spesifikt spillekort ($A$).
+					$X$ er anntall kort han kjøper før han får dette.
+					Det er $10$ forskjellige spillekort i serien.
+					Han kjøper pakker av kort med $n=20$ kort i hver pakke.
+					Hver pakke er uavhengig.\\
+					Hva er fordelinga for antall kort i pakka som er med spiller $A$?\\
+					Hva er sannsynligheten for at Ola får minst ett kort med spiller $A$ i pakka?\\
+					Hva er forventa antall ulike spillekort i pakka?}
+				{Ola gjør $n=20$ kjøp.
 					Resultatet av hvert kjøp er uavhengige, og sannsynligheten for suksess (kort $A$) er lik $\frac{1}{10}$ for hvert kjøp.
-					Da blir $Y=$tal på kort $A$, binomisk fordelt med $n=20$ delforsøk og sannsynlighet $p=\frac{1}{10}$:\\
+					Da blir $Y=$ tall på kort $A$, binomisk fordelt med $n=20$ delforsøk og sannsynlighet $p=\frac{1}{10}$:\\
 					$Y \sim \text{binom}\left(n=20,p=\frac{1}{10}\right)$\\
 					$P(Y\geq 1) = 1-P(X=0)=1-\binom{20}{0}\left(\frac{1}{10}\right)^0\left(1-\frac{1}{10}\right)^20=1-0.122=0.878$\\
 					Definerer korttypene $i\in \{A,B,\cdots,J\}$:\\
@@ -411,8 +414,7 @@
 					Da blir \\
 					$E(I_i)=1\cdot P(I_i=1)+0\cdot P(I_i=0)=P(I_i=1)=P(Y\geq 1)=0.878$\\
 					La tallet på ulike kort være $N=\sum_i I_i$. Da blir\\
-					$E(N)=E(\sum_i I_i)=\sum_i E(I_i)=\sum_i 0.878 = 10 \cdot 0.878 = 8.78$
-				}
+					$E(N)=E(\sum_i I_i)=\sum_i E(I_i)=\sum_i 0.878 = 10 \cdot 0.878 = 8.78$ }
 			\end{block}
 		\end{column}
 		\begin{column}{.33\linewidth}
