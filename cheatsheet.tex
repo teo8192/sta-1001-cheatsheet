@@ -25,9 +25,9 @@
 {\center\normalsize Oppgave\\
 	{\footnotesize\raggedright \textit{#1}\\#2\\}}
 \newcommand{\deloppgave}[2]
-{\footnotesize\center\textbf{Deloppgave}\\
-	\raggedright \textit{#1}\\#2\\}
+{\footnotesize\center\textbf{Deloppgave}\\ \raggedright \textit{#1}\\#2\\}
 \newcommand{\matte}[1]{\vspace{-3mm}\begin{align*}#1\end{align*}}
+\newcommand{\maths}[1]{\vspace{-3mm}\begin{align*}#1\end{align*}\\\vspace{-3mm}}
 \newcommand{\ol}[0]{\overline}
 \newcommand{\tema}[2]{\footnotesize\raggedright\textbf{#1}\\{#2}\par}
 \newcommand{\subsect}[1]{\center\normalsize{#1}\\}
@@ -402,23 +402,23 @@
 				\tema{Regresjonsmodellen}
 				{\matte{&Y_i=\beta_0+\beta_1x_i+\epsilon_i, &i=1,\ldots,n}
 					Forutsetningene er at
-					\matte{&E(\epsilon_i)=0,&Var(\epsilon_i)=\sigma^2,& &i=1,\ldots,n}
+					\maths{&E(\epsilon_i)=0,&Var(\epsilon_i)=\sigma^2,& &i=1,\ldots,n}
 					og $\epsilon_1,\ldots,\epsilon_n$ er inbyrdes uavhengige. Dette medfører at
-					\matte{&E(Y_i)=\mu_{Y|x_i}=\beta_0+\beta_1x_i,&Var(Y_i)=\sigma_{Y|x_i}^2=\sigma^2,& &i=1,\ldots,n}
+					\maths{&E(Y_i)=\mu_{Y|x_i}=\beta_0+\beta_1x_i,&Var(Y_i)=\sigma_{Y|x_i}^2=\sigma^2,& &i=1,\ldots,n}
 					der $Y_1,\ldots,Y_n$ også er innbyrdes uavhengige.
 				}
 				\tema{MKM}
 				{Bruker miste kvadrat-metoden til å estimere $\beta_0$ og $\beta_1$ fra data for å få ei estimert (tilpassa) regresjonslinje for forventningslinja $\beta_0+\beta_1x$:
-					\matte{\hat y=b_0+b_1x}
+					\maths{\hat y=b_0+b_1x}
 					MKM baserer seg på å minimere
-					\matte{SSE=\sum_{i=1}^n(y_i-\hat y_i)^2=\sum_{i=1}^n(y_i-b_0-b_1x_i)^2}
+					\maths{SSE=\sum_{i=1}^n(y_i-\hat y_i)^2=\sum_{i=1}^n(y_i-b_0-b_1x_i)^2}
 					Gir estimatorer
-					\matte{B_1=\frac{\sum_{i=1}^n(x_i-\bar x)(Y_i-\overline{Y})}{\sum_{i=1}^n(x_i-\overline{x})^2}=\frac{\sum_{i=1}^n(x_i-\bar x)Y_i}{\sum_{i=1}^n(x_i-\overline{x})^2}, &B_0=\overline{Y}-B_1\overline{x}}
+					\maths{B_1=\frac{\sum_{i=1}^n(x_i-\bar x)(Y_i-\overline{Y})}{\sum_{i=1}^n(x_i-\overline{x})^2}=\frac{\sum_{i=1}^n(x_i-\bar x)Y_i}{\sum_{i=1}^n(x_i-\overline{x})^2}, &B_0=\overline{Y}-B_1\overline{x}}
 					der
-					\matte{&E(B_1)=\beta_1, &Var(B_1)=\frac{\sigma^2}{\sum_{i=1}^n(x_i-\overline x)^2}\\
+					\maths{&E(B_1)=\beta_1, &Var(B_1)=\frac{\sigma^2}{\sum_{i=1}^n(x_i-\overline x)^2}\\
 						&E(B_0)=\beta_0, &Var(B_0)=\frac{\sigma^2\sum_{i=1}^nx_i^2}{n\sum_{i=1}^n(x_i-\overline{x})^2}}
 					I tillegg har vi (forventningsrett) estimator for $\sigma^2$:
-					\matte{S^2=\frac{SSE}{n-2}=\frac{\sum_{i=1}^n(Y_i-\hat Y_i)^2}{n-2}=\frac{\sum_{i=1}^n(Y_i-B_0-B_1x_i)^2}{n-2}}}
+					\maths{S^2=\frac{SSE}{n-2}=\frac{\sum_{i=1}^n(Y_i-\hat Y_i)^2}{n-2}=\frac{\sum_{i=1}^n(Y_i-B_0-B_1x_i)^2}{n-2}}}
 				\tema{Parameterinferens}
 				{Om vi anntar at feilledda er normalfordelte}
 			\end{block}
@@ -449,18 +449,18 @@
 					La tallet på ulike kort være $N=\sum_i I_i$. Da blir\\
 					$E(N)=E(\sum_i I_i)=\sum_i E(I_i)=\sum_i 0.878 = 10 \cdot 0.878 = 8.78$ }
 				\oppgave{Fordelinga til en kontinuerlig stokastisk variabel $X$ er gitt ved følgende sannsynlighetstetthetsfunksjon:
-					\matte{f(x)=\begin{cases}
+					\maths{f(x)=\begin{cases}
 							\frac{2}{9}x,&0<x<3\\
 							0,&\text{ellers}
 						\end{cases}}
 					Vi er interresert i følgende hendelser:
-					\matte{&X=\{X>1\} &\text{og}& &B=\{X>2\}}
+					\maths{&X=\{X>1\} &\text{og}& &B=\{X>2\}}
 					er disse hendelsene disjunkte?\\
 					Hva er sannsynligheten for $B$?\\
 					Hva er sannsynligheten for $B$ gitt $A$?\\
 					Er disse hendelsene uavhengige?}
 				{Nei, $A$ og $B$ er ikke disjunkte, det er mulig at $X>1$ sammtidig som $X>2$ ($X=2.5$)
-					\matte{P(B)=P(X>2)=\int_2^3f(x)\,dx=\int_2^3\frac{2}{9}x\,dx\left[\frac{1}{9}x^2\right]_2^3=1-\frac{4}{9}=\frac{5}{9}\\
+					\maths{P(B)=P(X>2)=\int_2^3f(x)\,dx=\int_2^3\frac{2}{9}x\,dx\left[\frac{1}{9}x^2\right]_2^3=1-\frac{4}{9}=\frac{5}{9}\\
 						P(B|A)=\frac{P(B\cap A)}{P(A)}=\frac{P(A|B)P(B)}{P(A)}=\frac{1\cdot P(B)}{P(A)}=\frac{\frac{5}{9}}{\int_1^3\frac{1}{9}x\,dx}=\frac{5}{8}}
 					Vi ser at $P(B|A)\neq P(B)$, så $A$ og $B$ er ikke uavhengige}
 			\end{block}
@@ -477,15 +477,15 @@
 					Hva blir konklusjonen?}
 				{Vi går ut ifra at observatorene i et tilfeldig utvalg $X_1,\ldots,X_{15}$ fra en normalfordelt populasjon med forventning $\mu$ og standardavvik $\sigma$.
 					Vi vil teste hypotesene:
-					\matte{&H_0: \mu=210 &H_1:\mu<210}
+					\maths{&H_0: \mu=210 &H_1:\mu<210}
 					Ettersom $\sigma$ er ukjent og maa estimeres fra data ved $S$ blir dette en T-test, testobservator:
-					\matte{T=\frac{\overline X - \mu_0}{\frac{S}{\sqrt n}}}
+					\maths{T=\frac{\overline X - \mu_0}{\frac{S}{\sqrt n}}}
 					som er \textit{t-fordelt} med $n-1=14$ firhetsgrader når $H_0$ er sann.
 					Insett data:
-					\matte{t=\frac{201.067-210}{\frac{10.539}{\sqrt n}}=-3.282}
+					\maths{t=\frac{201.067-210}{\frac{10.539}{\sqrt n}}=-3.282}
 					Forkaster $H_0$ om $t<t_{0.02,14}=-1.761$. Så $H_0$ blir forkasta, og vi kan påstå at forventnia rekkevidde $\mu$ er under 210km.\\
 					Kan finne \textit{p-verdien} fra:
-					\matte{\text{p-verdi}=P(T_{14}<-3.282)=\begin{cases}
+					\maths{\text{p-verdi}=P(T_{14}<-3.282)=\begin{cases}
 							<0.005\\
 							>0.001
 						\end{cases}}
@@ -494,12 +494,12 @@
 				\deloppgave{Vi er og interresert i hvor mye rekkevidda kan variere.\\
 					Utled et $90\%$-konfidensintervall for variansen $\sigma^2$.\\
 					Finn intervallestimatet fra observatorene. Hva kan du konkludere fra intervallet?}{Utleder et $90\%$-konfidensintervall fra variansen, $\sigma^2$, bruker at vi kjenner fordelinga for den standariserte observatoren
-					\matte{\frac{(n-1)S^2}{\sigma^2}\sim \chi_{n-1}^2&\\
+					\maths{\frac{(n-1)S^2}{\sigma^2}\sim \chi_{n-1}^2&\\
 						P\left(\chi_{0.95}^2<\frac{(n-1)S^2}{\sigma^2}<\chi_{0.05}^2\right)&=0.90\\
 						P\left(\frac{\chi_{0.95}^2}{(n-1)S^2}<\frac{1}{\sigma^2}<\frac{\chi_{0.05}^2}{(n-1)S^2}\right)&=0.90\\
 						P\left(\frac{(n-1)S^2}{\chi_{0.05}^2}<\sigma^2<\frac{(n-1)S^2}{\chi_{0.95}^2}\right)&=0.90}
 					Intervallestimat fra observasjonene og $n-1=14$ frihetsgrader
-					\matte{\left(\frac{(n-1)\cdot s^2}{\chi_{0.05}^2},\frac{(n-1)\cdot s^2}{\chi_{0.05}^2}\right) = \left(\frac{(15-1)\cdot 111.067}{23.685},\frac{(15-1)\cdot 111.067}{6.571}\right)\\=(65.65,236.65)}
+					\maths{\left(\frac{(n-1)\cdot s^2}{\chi_{0.05}^2},\frac{(n-1)\cdot s^2}{\chi_{0.05}^2}\right) = \left(\frac{(15-1)\cdot 111.067}{23.685},\frac{(15-1)\cdot 111.067}{6.571}\right)\\=(65.65,236.65)}
 					Med $90\%$ sannsynlighet for at intervallet inneholder den sanne verdien for variansen $\sigma^2$.
 					Merk at fra dette kan vi og lage et $90\%$-konfidensintervall for standardavviket $\sigma$:
 					\matte{(\sqrt{65.65},\sqrt{236.65})=(8.10,15.38)}
@@ -512,11 +512,11 @@
 					Vi går og utifra at de to utvalga er uavhengige.
 					I teksten er det gjort en anntakelse om at variansen $\sigma^2$ er den samme for de to populasjonene.\\
 					Et $95\%$-konfidensintervall for $\mu_1-\mu_2$ er da gitt ved
-					\matte{\left(\ol X_1 -\ol X_2-t_{0.025}\cdot S_p\cdot\sqrt{\frac{1}{n_1}+\frac{1}{n_2}},\ol X_1 -\ol X_2+t_{0.025}\cdot S_p\cdot\sqrt{\frac{1}{n_1}+\frac{1}{n_2}} \right)}
+					\maths{\left(\ol X_1 -\ol X_2-t_{0.025}\cdot S_p\cdot\sqrt{\frac{1}{n_1}+\frac{1}{n_2}},\ol X_1 -\ol X_2+t_{0.025}\cdot S_p\cdot\sqrt{\frac{1}{n_1}+\frac{1}{n_2}} \right)}
 					Estimatet for den felles variansen blir
-					\matte{s_p^2=\frac{s_1^2\cdot(n_1-1)+s_2^2\cdot(n_2-1)}{n_1+n_2-2}=\frac{111.067\cdot 14 + 115.124 \cdot 14}{15+15-2}}
+					\maths{s_p^2=\frac{s_1^2\cdot(n_1-1)+s_2^2\cdot(n_2-1)}{n_1+n_2-2}=\frac{111.067\cdot 14 + 115.124 \cdot 14}{15+15-2}}
 					Dermed blir intervallestimatet med insatte observasjoner:
-					\matte{201.067-194.467\pm2.048\cdot\sqrt{113.095}\cdot\sqrt{\frac{1}{15}+\frac{1}{15}}=(-1.353,14.553)}
+					\maths{201.067-194.467\pm2.048\cdot\sqrt{113.095}\cdot\sqrt{\frac{1}{15}+\frac{1}{15}}=(-1.353,14.553)}
 					Her er det brukt $n_1+n_2-2=28$ frihetsgradet i t-fordelinga.\\
 					Vi kan med $95\%$ sannsynlighet konkludre at den sanne forventa rekkeviddedifferansen ligger innenfor intervallgrensene.
 					Da $0$ er innafor intervallet vet vi og at en tosidig test ($5\%$ signifikansnivå) ikke ville forkasta $H_0$ om ingen forskjell, kan ikke konkludere at forventa rekkevidde er ulike.
