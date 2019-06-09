@@ -164,6 +164,17 @@
 					$\int \frac{1}{u} = \frac{\ln(x)}{u'} + C$ \\
 					$\int u \cdot v' \, dx = u\cdot v-\int u'v \, dx$\\
 				}
+				\center\normalsize $E(X)$ og $Var(X)$\\
+				{\footnotesize\raggedright
+					%$E(x)=\int_{-\infty}^\infty x\,f(x) \,dx$ \\
+					%$E(x)=\sum_{i=1}^N x\,f(x) \,dx$ \\
+					%$E(g(x))=\int_{-\infty}^\infty g(X)f(x)\,dx$ \\
+					%$E(aX+bY)=aE(X)+bE(Y)$ \\
+					$Var(aX+bY)=a^2Var(X)+b^2Var(Y)$\\
+					$E(\chi^2_{n-1})=n-1$\\
+					$E(T_\nu)=0$\\
+					$Var(T_\nu)=\frac \nu {\nu - 2}, \qquad \nu \geq 3$\\
+				}
 			\end{block}
 		\end{column}
 		\begin{column}{.25\linewidth}
@@ -259,15 +270,6 @@
 					Korrelasjon:\\
 					$\rho_{XY}=\frac{Cov(X,Y)}{\sqrt{Var(x)\cdot Var(y)}}, \qquad -1 < \rho_{XY} < 1$\\
 				}
-				\center\normalsize $E(X)$ og $Var(X)$\\
-				{\footnotesize\raggedright
-					%$E(x)=\int_{-\infty}^\infty x\,f(x) \,dx$ \\
-					%$E(x)=\sum_{i=1}^N x\,f(x) \,dx$ \\
-					%$E(g(x))=\int_{-\infty}^\infty g(X)f(x)\,dx$ \\
-					%$E(aX+bY)=aE(X)+bE(Y)$ \\
-					$Var(aX+bY)=a^2Var(X)+b^2Var(Y)$\\
-					$E(\chi^2_{n-1})=n-1$\\
-				}
 				\center\normalsize Sannsynlighetsregler\\
 				{\footnotesize\raggedright
 					\textbf{Addisjonsregelen}: $P(A\cup B)=P(A)+P(B)-P(A \cap B)$\\
@@ -361,17 +363,6 @@
 					\textbf{Kombinasjonsregelen}\\
 					$n$ merka enheter, velger $k$ uten tilbakelegging, antall ikke-ordna utfall: $_nC_r=\binom{n}{k}=\frac{n!}{(n-k)!k!}$
 				}
-				\center\normalsize Sannsynlighetsregler\\
-				{\footnotesize\raggedright
-					\textbf{Addisjonsregelen}: $P(A\cup B)=P(A)+P(B)-P(A \cap B)$\\
-					\textbf{Multiplikasjonsregelen}: $P(A\cap B)=P(A)\cdot P(B|A)=P(B)\cdot P(A|B)$\\
-					\textbf{Betinga sannsynlighet}: $P(A|B)=\frac{P(A\cap B)}{P(B)}$\\
-					\textbf{Total sannsynlighet}: $P(A)=\sum_{i=1}^n P(B_i\cap A)=\sum_{i=1}^kP(B_i)\cdot P(A|B_i)$\\
-					\textbf{Bayes setning}: $P(B|A)=\frac{P(B)\cdot P(A|B)}{P(A)}$\\
-					\textbf{Tilfeller ved uavhengighet:}\\
-					$P(A\cap B)=P(A)\cdot P(B)$\\
-					$P(A|B)=A(A)$\\
-				}
 				\center\normalsize Forenklinger for lineærkombinasjoner\\
 				{\footnotesize\raggedright
 					$Var(aX+bY)=a^2Var(X)+b^2Var(Y)+2ab\cdot Cov(X,Y)$\\
@@ -394,7 +385,37 @@
 				}
 			\end{block}
 		\end{column}
-		\begin{column}{.66\linewidth}
+		\begin{column}{.33\linewidth}
+			\begin{block}{Løsningsforslag}
+				\center\normalsize Oppgave\\
+				{\footnotesize\raggedright
+					\textit{Ola samler spillekort.
+						Ønsker et spesifikt spillekort ($A$).
+						$X$ er anntall kort han kjøper før han får dette.
+						Det er $10$ forskjellige spillekort i serien.
+						Han kjøper pakker av kort med $n=20$ kort i hver pakke.
+						Hver pakke er uavhengig.\\
+						Hva er fordelinga for antall kort i pakka som er med spiller $A$?\\
+						Hva er sannsynligheten for at Ola får minst ett kort med spiller $A$ i pakka?\\
+						Hva er forventa antall ulike spillekort i pakka?}\par
+					Ola gjør $n=20$ kjøp.
+					Resultatet av hvert kjøp er uavhengige, og sannsynligheten for suksess (kort $A$) er lik $\frac{1}{10}$ for hvert kjøp.
+					Da blir $Y=$tal på kort $A$, binomisk fordelt med $n=20$ delforsøk og sannsynlighet $p=\frac{1}{10}$:\\
+					$Y \sim \text{binom}\left(n=20,p=\frac{1}{10}\right)$\\
+					$P(Y\geq 1) = 1-P(X=0)=1-\binom{20}{0}\left(\frac{1}{10}\right)^0\left(1-\frac{1}{10}\right)^20=1-0.122=0.878$\\
+					Definerer korttypene $i\in \{A,B,\cdots,J\}$:\\
+					$I_i=\begin{cases}
+						1, &\text{minst ett kort av typen $i$.}\\
+						0, &\text{ingen kort av typen $i$}
+					\end{cases}$\\
+					Da blir \\
+					$E(I_i)=1\cdot P(I_i=1)+0\cdot P(I_i=0)=P(I_i=1)=P(Y\geq 1)=0.878$\\
+					La tallet på ulike kort være $N=\sum_i I_i$. Da blir\\
+					$E(N)=E(\sum_i I_i)=\sum_i E(I_i)=\sum_i 0.878 = 10 \cdot 0.878 = 8.78$
+				}
+			\end{block}
+		\end{column}
+		\begin{column}{.33\linewidth}
 		\end{column}
 	\end{columns}
 \end{frame}
