@@ -155,7 +155,7 @@
 				\body{Når fordelinga til estimatoren er kjent (utvalgsfordelinga) kan vi regne ut hvor stor feil vi gjør i estimeringa. Vil ofte ha en viss sannsynlighet for at feilen ikke skal overskride en verdi $e$\\
 					$P(|\hat\Theta-\Theta|<e=1-\alpha)$ (vanlige tilfeller)\\
 					$\bar X$ (normalfordelt):\\
-					$P(|\bar X - \mu|<e=1-\alpha) \Rightarrow n=\left( \frac{z_\frac{\alpha}{2}\sigma}{e}\right)^2\Rightarrow e=z_\frac{\alpha}{2}\frac{\sigma}{\sqrt n}$
+					$P(|\bar X - \mu|<e=1-\alpha) \Rightarrow n=\left( \frac{z_\frac{\alpha}{2}\sigma}{e}\right)^2\Rightarrow e=z_\frac{\alpha}{2}\frac{\sigma}{\sqrt n}$\\
 					$\hat p$ (binomisk):\\
 					$P(|\hat p - p| < e=1-\alpha)\Rightarrow n\approx \left(\frac{z_\frac{\alpha}{2}\sqrt{\hat p {1-\hat p}}}{e}\right)^2\Rightarrow e\approx z_\frac{\alpha}{2}\sqrt{\frac{\hat p(1 - \hat p)}{n}}$}
 				\subsect{Noen regneregler}
@@ -233,7 +233,7 @@
 						\sum_x x\cdot f(x), &\text{deskret}\\
 						\int_{-\infty}^\infty x\cdot f(x) dx, &\text{kontinuerlig}
 					\end{cases}$\\
-					$\sigma^2=Var(X)=\begin{cases}
+					$\sigma^2=Var(X)=E(X^2)-E(X)^2=\begin{cases}
 						\sum_x (x-\mu)^2f(x), &\text{deskret}\\
 						\int_{-\infty}^\infty (x-\mu)^2\cdot f(x) dx, &\text{kontinuerlig}
 					\end{cases}$\\
@@ -380,11 +380,11 @@
 					- Plotter utvalgskvantiler (Observasjonene ordna etter størrelse) mot teoretiske kvantiler (``Ideelle observasjoner'') fra aktuell fordeling\\
 					- Teoretiske kvantiler er gitt ver invers kumulativ fordeling ``jevnt spredte'' sannsynligheter mellom 0 og 1\\
 					- Om antatt fordeling stemmer skal plotter gi en tilnerma rett linje $x=y$\\
-				}
+				}\vspace{-3mm}
 				\subsect{Enkel linær regresjon}
 				\body{Har observasjonspar $(x_1,y_1),\ldots,(x_n,y_n)$.\\}
 				\tema{Regresjonsmodellen}
-				{\matte{&Y_i=\beta_0+\beta_1x_i+\epsilon_i, &i=1,\ldots,n}
+				{\vspace{-3mm}\maths{&Y_i=\beta_0+\beta_1x_i+\epsilon_i, &i=1,\ldots,n}
 					Forutsetningene er at
 					\maths{&E(\epsilon_i)=0,&Var(\epsilon_i)=\sigma^2,& &i=1,\ldots,n}
 					og $\epsilon_1,\ldots,\epsilon_n$ er inbyrdes uavhengige. Dette medfører at
@@ -403,49 +403,44 @@
 					I tillegg har vi (forventningsrett) estimator for $\sigma^2$:
 					\maths{S^2=\frac{SSE}{n-2}=\frac{\sum_{i=1}^n(Y_i-\hat Y_i)^2}{n-2}=\frac{\sum_{i=1}^n(Y_i-B_0-B_1x_i)^2}{n-2}}}
 				\tema{Parameterinferens}
-				{Om vi anntar at feilledda er normalfordelte}
+				{Om vi anntar at feilledda er normalfordelte
+					\maths{\epsilon_i\sim N(0,\sigma)}
+					vil
+					\maths{&B_1\sim N\left(\beta_1,\frac{\sigma}{\sqrt{\sum_{n=1}^n(x_i-\ol x)^2}}\right), &B_0\sim N\left(\beta_0,\sqrt{\frac{\sum_{i=1}^nx_i^2}{n\cdot\sum_{i=1}^n(x_i-\ol x)^2}}\right)}
+					og KI og tester kan konstrueres ved å ta utgangspunkt i at
+					\maths{V=\frac{(n-2)S^2}{\sigma^2}}
+					er kikvadratfordelt med $n-2$ frihetsgrader, og dermed at
+					\maths{&T=\frac{B_1-\beta_1}{\hat{SE}(B_1)}=\frac{B_1-\beta_1}{\frac{S}{\sqrt{\sum_{i=1}^n(x_i-\ol x)^2}}}, &T=\frac{B_0-\beta_0}{\hat{SE}(B_0)}=\frac{B_0-\beta_0}{S\sqrt{\frac{\sum_{i=1}^nx_i^2}{n\cdot\sum_{i=1}^n(x_i-\ol x)^2}}}}
+					vil være t-fordelte med $n-2$ frihetsgrader. Dette gir oss da KI og tester ofr $\beta_1,\beta_0,\sigma$}
+				\tema{Inferens for $\mu_{Y|x_0}$}
+				{Dersom $x$ er en gitt verdi, $x_0$, vil en estimator for forventa verdi av responsen bli
+					\maths{\hat Y_0=B_0+B_1x_0}
+					Fordelinga for $\hat Y_0$ blir:
+					\maths{\hat Y_0 \sim N\left(\mu_{Y|x_0},\sigma\sqrt{\frac{1}{n}+\frac{(x_0-\ol x)^2}{\sum_{i=1}^n(x_i-\ol x)^2}}\right)}
+					Og da kan ta utgangspunkt i at
+					\maths{T=\frac{\hat Y_0-\mu_{Y|x_0}}{S\sqrt{\frac{1}{n}+\frac{(x_0-\ol)^2}{\sum_{i=1}^n(x_1-\ol x)^2}}}}
+					er t-fordelt med $n-2$ frihetsgrader til for eksempel å lage $100(1-\alpha)\%$-konfidensintervall for $\mu_{Y|x_0}$ (forventa verdi av responsen $Y$ når $x=x_0$):
+					\maths{\left[\hat y_0 - t_{\frac{\alpha}{2}}s\sqrt{\frac{1}{n}+\frac{(x_0-\ol x)^2}{\sum_{i=1}^n(x_i - \ol x)^2}},\hat y_0 + t_{\frac{\alpha}{2}}s\sqrt{\frac{1}{n}+\frac{(x_0-\ol x)^2}{\sum_{i=1}^n(x_i - \ol x)^2}}\right]}.}
 			\end{block}
 		\end{column}
 		\begin{column}{.33\linewidth}
+				\tema{PI for $Y_0$}
+				{Ønsker ofte intervall som med sannsynligheten $100(1-\alpha)\%$ vil inneholde verdien av en ny observasjon $Y_0$ (når $x=x_0$), altså et \textit{prediksjonsintervall}. Tar utgangspunkt i forskjellen mellom estimatoren for forventa respons $\hat Y_0$ og verdien av en ny observasjon, $Y_0$
+					\maths{\hat Y_0 - Y_0 \sim N\left(0,\sigma\sqrt{1+\frac{1}{n}+\frac{(x_0-\ol x)^2}{\sum_{i=1}^n(x_i-\ol x)^2}}\right)}
+					Da kan vi bruke at
+					\maths{T=\frac{\hat Y_0-Y_0}{S\sqrt{1+\frac{1}{n}+\frac{(x_0-\ol x)^2}{\sum_{i=1}^n(x_i-\ol x)^2}}}}
+					er t-fordelt med $n-2$ frihetsgrader.\\
+					Et $100(1-\alpha)\%$-PI for responsen $Y_0$ vil da finnes ved
+					\maths{\left[\hat y_0-t_\frac{\alpha}{2}s\sqrt{1+\frac{1}{n}+\frac{(x_0-\ol x)^2}{\sum_{i=1}^n(x_i-\ol x)^2}},\hat y_0+t_\frac{\alpha}{2}s\sqrt{1+\frac{1}{n}+\frac{(x_0-\ol x)^2}{\sum_{i=1}^n(x_i-\ol x)^2}}\right]}.
+				}
+				\tema{Betydning av lineær modell}
+				{\maths{\text{Total variasjon}&=\text{Forklart variasjon}&&+\text{Restvariasjon}\\
+						\sum_{i=1}^n(y_i-\ol y)^2&=\sum_{i=1}^n(\hat y_i-\ol y)^2 &&+ \sum_{i=1}^n (y_i-\hat y_i)^2\\
+						SST&=SSR&&+SSE}
+					\textbf{forklaringsgraden} er definert ved
+					\maths{R^2&=\frac{\text{Forklart variasjon}}{\text{Total variasjon}}=\frac{SSR}{SST}=\frac{SST-SSE}{SST}=1-\frac{SSE}{SST}, &0 \leq R^2 \leq 1}
+					Dette er et vanlig mål på hvor stor andel av variasjonen i responsen som kan tilskrives den lineære sammenhengen $\mu_{Y|x}=\beta_0+\beta_1 x$ (Resten tilskrives tilfeldige feil, $\epsilon$)}
 			\begin{block}{Løningsforslag}
-				\oppgave{Ola samler spillekort.
-					Ønsker et spesifikt spillekort ($A$).
-					$X$ er anntall kort han kjøper før han får dette.
-					Det er $10$ forskjellige spillekort i serien.
-					Han kjøper pakker av kort med $n=20$ kort i hver pakke.
-					Hver pakke er uavhengig.\\
-					Hva er fordelinga for antall kort i pakka som er med spiller $A$?\\
-					Hva er sannsynligheten for at Ola får minst ett kort med spiller $A$ i pakka?\\
-					Hva er forventa antall ulike spillekort i pakka?}
-				{Ola gjør $n=20$ kjøp.
-					Resultatet av hvert kjøp er uavhengige, og sannsynligheten for suksess (kort $A$) er lik $\frac{1}{10}$ for hvert kjøp.
-					Da blir $Y=$ tall på kort $A$, binomisk fordelt med $n=20$ delforsøk og sannsynlighet $p=\frac{1}{10}$:\\
-					$Y \sim \text{binom}\left(n=20,p=\frac{1}{10}\right)$\\
-					$P(Y\geq 1) = 1-P(X=0)=1-\binom{20}{0}\left(\frac{1}{10}\right)^0\left(1-\frac{1}{10}\right)^{20}=1-0.122=0.878$\\
-					Definerer korttypene $i\in \{A,B,\cdots,J\}$:\\
-					$I_i=\begin{cases}
-						1, &\text{minst ett kort av typen $i$.}\\
-						0, &\text{ingen kort av typen $i$}
-					\end{cases}$\\
-					Da blir \\
-					$E(I_i)=1\cdot P(I_i=1)+0\cdot P(I_i=0)=P(I_i=1)=P(Y\geq 1)=0.878$\\
-					La tallet på ulike kort være $N=\sum_i I_i$. Da blir\\
-					$E(N)=E(\sum_i I_i)=\sum_i E(I_i)=\sum_i 0.878 = 10 \cdot 0.878 = 8.78$ }
-				\oppgave{Fordelinga til en kontinuerlig stokastisk variabel $X$ er gitt ved følgende sannsynlighetstetthetsfunksjon:
-					\maths{f(x)=\begin{cases}
-							\frac{2}{9}x,&0<x<3\\
-							0,&\text{ellers}
-						\end{cases}}
-					Vi er interresert i følgende hendelser:
-					\maths{&X=\{X>1\} &\text{og}& &B=\{X>2\}}
-					er disse hendelsene disjunkte?\\
-					Hva er sannsynligheten for $B$?\\
-					Hva er sannsynligheten for $B$ gitt $A$?\\
-					Er disse hendelsene uavhengige?}
-				{Nei, $A$ og $B$ er ikke disjunkte, det er mulig at $X>1$ sammtidig som $X>2$ ($X=2.5$)
-					\maths{P(B)=P(X>2)=\int_2^3f(x)\,dx=\int_2^3\frac{2}{9}x\,dx\left[\frac{1}{9}x^2\right]_2^3=1-\frac{4}{9}=\frac{5}{9}\\
-						P(B|A)=\frac{P(B\cap A)}{P(A)}=\frac{P(A|B)P(B)}{P(A)}=\frac{1\cdot P(B)}{P(A)}=\frac{\frac{5}{9}}{\int_1^3\frac{1}{9}x\,dx}=\frac{5}{8}}
-					Vi ser at $P(B|A)\neq P(B)$, så $A$ og $B$ er ikke uavhengige}
 				\oppgave{Vi anntar at konsentrasjonen i en prøve $Y_i$, av volum $l_i$ liter har følgende fordeling:
 					\maths{Y_i\sim N\left(\mu,\frac{\sigma}{\sqrt l_i}\right)}
 					Nå er det tatt $n=5$ uavhengige prøver av ulik størrelse.\\
@@ -538,4 +533,52 @@
 		\end{column}
 	\end{columns}
 \end{frame}
+\begin{frame}{}
+	\begin{columns}[t]
+		\begin{column}{.33\linewidth}
+			\begin{block}{Løningsforslag}
+				\oppgave{Ola samler spillekort.
+					Ønsker et spesifikt spillekort ($A$).
+					$X$ er anntall kort han kjøper før han får dette.
+					Det er $10$ forskjellige spillekort i serien.
+					Han kjøper pakker av kort med $n=20$ kort i hver pakke.
+					Hver pakke er uavhengig.\\
+					Hva er fordelinga for antall kort i pakka som er med spiller $A$?\\
+					Hva er sannsynligheten for at Ola får minst ett kort med spiller $A$ i pakka?\\
+					Hva er forventa antall ulike spillekort i pakka?}
+				{Ola gjør $n=20$ kjøp.
+					Resultatet av hvert kjøp er uavhengige, og sannsynligheten for suksess (kort $A$) er lik $\frac{1}{10}$ for hvert kjøp.
+					Da blir $Y=$ tall på kort $A$, binomisk fordelt med $n=20$ delforsøk og sannsynlighet $p=\frac{1}{10}$:\\
+					$Y \sim \text{binom}\left(n=20,p=\frac{1}{10}\right)$\\
+					$P(Y\geq 1) = 1-P(X=0)=1-\binom{20}{0}\left(\frac{1}{10}\right)^0\left(1-\frac{1}{10}\right)^{20}=1-0.122=0.878$\\
+					Definerer korttypene $i\in \{A,B,\cdots,J\}$:\\
+					$I_i=\begin{cases}
+						1, &\text{minst ett kort av typen $i$.}\\
+						0, &\text{ingen kort av typen $i$}
+					\end{cases}$\\
+					Da blir \\
+					$E(I_i)=1\cdot P(I_i=1)+0\cdot P(I_i=0)=P(I_i=1)=P(Y\geq 1)=0.878$\\
+					La tallet på ulike kort være $N=\sum_i I_i$. Da blir\\
+					$E(N)=E(\sum_i I_i)=\sum_i E(I_i)=\sum_i 0.878 = 10 \cdot 0.878 = 8.78$ }
+				\oppgave{Fordelinga til en kontinuerlig stokastisk variabel $X$ er gitt ved følgende sannsynlighetstetthetsfunksjon:
+					\maths{f(x)=\begin{cases}
+							\frac{2}{9}x,&0<x<3\\
+							0,&\text{ellers}
+						\end{cases}}
+					Vi er interresert i følgende hendelser:
+					\maths{&X=\{X>1\} &\text{og}& &B=\{X>2\}}
+					er disse hendelsene disjunkte?\\
+					Hva er sannsynligheten for $B$?\\
+					Hva er sannsynligheten for $B$ gitt $A$?\\
+					Er disse hendelsene uavhengige?}
+				{Nei, $A$ og $B$ er ikke disjunkte, det er mulig at $X>1$ sammtidig som $X>2$ ($X=2.5$)
+					\maths{P(B)=P(X>2)=\int_2^3f(x)\,dx=\int_2^3\frac{2}{9}x\,dx\left[\frac{1}{9}x^2\right]_2^3=1-\frac{4}{9}=\frac{5}{9}\\
+						P(B|A)=\frac{P(B\cap A)}{P(A)}=\frac{P(A|B)P(B)}{P(A)}=\frac{1\cdot P(B)}{P(A)}=\frac{\frac{5}{9}}{\int_1^3\frac{1}{9}x\,dx}=\frac{5}{8}}
+					Vi ser at $P(B|A)\neq P(B)$, så $A$ og $B$ er ikke uavhengige}
+			\end{block}
+		\end{column}
+		\begin{column}{.66\linewidth}
+		\end{column}
+	\end{columns}
+\end{frame}{}
 \end{document}
