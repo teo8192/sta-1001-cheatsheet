@@ -167,7 +167,7 @@
 					$\int \ln (x) \, dx=x\ln (x) -x + C$ \\
 					$u$ er et utrykk med $x$\\
 					$\int a^u \, dx = \frac{a^u}{u'\cdot \ln(a)} + C$\\
-					$\int \frac{1}{u} = \frac{\ln(x)}{u'} + C$ \\
+					$\int \frac{1}{u} \,dx = \frac{\ln(u)}{u'} + C$ \\
 					$\int u \cdot v' \, dx = u\cdot v-\int u'v \, dx$
 				}
 				\subsect{Kombinatorikk}
@@ -453,22 +453,29 @@
 					Vis as sannsynlighetsmaksimeringsfunksjonen for $\mu$ og $\sigma^2$ blir
 					\maths{&\hat\mu=\frac{\sum_{i=1}^nl_iY_i}{\sum_{i=1}^nl_i},
 						&\text{og}&
-						&\hat\sigma^2=\frac{\sum_{i=1}^nl_i(Y_i-\hat\mu)^2}{n}}.}
+						&\hat\sigma^2=\frac{\sum_{i=1}^nl_i(Y_i-\hat\mu)^2}{n}}.\vspace{-3mm}}
 				{\maths{L(\mu, \sigma^2)
 						=\prod_{i=1}^nf(x_i;\mu,\sigma_i)
 						=\prod_{i=1}^n\frac{1}{\sqrt{2\pi}\frac{\sigma}{\sqrt l_i}}\exp\left(-\frac{(y_i-\mu)^2}{2\frac{\sigma^2}{l_i}}\right)\\
 						=\prod_{i=1}^n\frac{\sqrt l_i}{\sqrt{2\pi}\sigma}\exp\left(-\frac{l_i(y_i-\mu)^2}{2\sigma^2}\right)\\
 						=\frac{1}{(\sqrt{2\pi})^n}\frac{1}{(\sqrt{\sigma^2})^n}\exp\left(-\frac{1}{2\sigma^2}\sum_{i=1}^nl_i(y_i-\mu)^2\right)\prod_{i=1}^n\sqrt{l_i}}
 					Finner sannsynlighetsmaksimeringsfunksjonen på vanlig måte:
-					\maths{
-						\ln L&= -\frac{n}{2}\ln(2\pi)-\frac{n}{2}\ln(\sigma^2)-\frac{1}{2\sigma^2}\sum_{i=1}^nl_i(y_i-\mu)^2+\frac{1}{2}\ln\left(\sum_{i=1}^nl_i\right)&\\
+					\maths{\ln L&= -\frac{n}{2}\ln(2\pi)-\frac{n}{2}\ln(\sigma^2)-\frac{1}{2\sigma^2}\sum_{i=1}^nl_i(y_i-\mu)^2+\frac{1}{2}\ln\left(\sum_{i=1}^nl_i\right)&\\
 						\frac{\partial\ln L}{\partial\mu}&=-\frac{1}{2\sigma^2}\sum_{i=1}^n 2l_i(y_i-\mu)(-1)=0 \qquad\qquad\text{(kjerneregelen)}\\
 						&\Rightarrow \mu\sum_{i=1}^nl_i=\sum_{i=1}^nl_iy_i
 						\Rightarrow\hat\mu=\frac{\sum_{i=1}^nl_iY_i}{\sum_{i=1}^nl_i}\\
 						\frac{\partial \ln L}{\partial \sigma^2}&=-\frac{n}{2\sigma^2}+\frac{1}{2\sigma^4}\sum_{i=1}^nl_i(y_i-\mu)^2=0\\
 						&\Rightarrow \frac{1}{\sigma^2}\sum_{i=1}^nl_i(y_i-\mu)^2=n\\
 						&\Rightarrow \hat\sigma^2=\frac{\sum_{i=1}^nl_i(Y_i-\hat\mu)^2}{n}
-					}.}
+					}.}\vspace{-4mm}
+				\deloppgave{Vis at $\hat\mu$ er forventningsrett. Vis at varinsen til $\hat\mu=\frac{\sigma^2}{\sum_{i=1}^nl_i}$\\
+					Vis at $\hat\sigma^2$ ikke er forventningsrett. Du kan bruke at $\frac{n\cdot \hat\sigma^2}{\sigma^2}\sim\chi_{n-1}^2$.\\
+					Hva blir en forventningsrett estimator for $\sigma^2$?}
+				{\maths{E(\hat\mu)&=E\left(\frac{\sum_{i=1}^nl_iY_i}{\sum_{i=1}^nl_i}\right)=\frac{\sum_{i=1}^nl_iE(Y_i)}{\sum_{i=1}^nl_i}=\frac{\sum_{i=1}^nl_i\mu}{\sum_{i=1}^nl_i}=\mu\frac{\sum_{i=1}^nl_i}{\sum_{i=1}^nl_i}=\mu\\
+						Var(\hat\mu)&=Var\left(\frac{\sum_{i=1}^nl_iY_i}{\sum_{i=1}^nl_i}\right)=\frac{\sum_{i=1}^nl_i^2Var(Y_i)}{\left(\sum_{i=1}^nl_i\right)^2}=\frac{\sum_{i=1}^nl_i^2\frac{\sigma^2}{l_i}}{\left(\sum_{i=1}^nl_i\right)^2}\\
+						&=\frac{\sigma^2\sum_{i=1}^nl_i}{\left(\sum_{i=1}^nl_i\right)^2}=\frac{\sigma^2}{\sum_{i=1}^nl_i}\\
+						E(\hat\sigma^2)&=E\left(\frac{n\sigma^2\hat\sigma^2}{n\sigma^2}\right)=\frac{\sigma^2}{n}E\left(\frac{n\hat\sigma^2}{\sigma^2}\right)=\sigma^2\frac{n-1}{n}\\
+						S^2&=\frac{\sum_{i=1}^nl_i(Y_i-\hat\mu)^2}{n-1}}.}
 			\end{block}
 		\end{column}
 		\begin{column}{.33\linewidth}
