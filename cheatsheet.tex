@@ -347,7 +347,7 @@
 				{\footnotesize\raggedright
 					Ved å finne sannsynligheten for å forkaste $H_0$ for ulike verdier av parameteren, $\Theta$, finner vi styrkefunksjonen:\\
 					$1-\beta(\Theta)=P$(Forkaste $H_0$, sann verdi = $\Theta$)
-					$1-\beta(\mu)=1-\Phi\left(z_\alpha-\frac{\mu-\mu_0}{\frac{\alpha}{\sqrt n}}\right) \qquad n=\frac{(z_\alpha-z_\beta)^2\sigma^2}{(\mu-\mu_0)}$
+					$1-\beta(\mu)=1-\Phi\left(z_\alpha-\frac{\mu-\mu_0}{\frac{\sigma}{\sqrt n}}\right) \qquad n=\frac{(z_\alpha-z_\beta)^2\sigma^2}{(\mu-\mu_0)}$
 				}
 			\end{block}
 		\end{column}
@@ -575,9 +575,50 @@
 					\maths{P(B)=P(X>2)=\int_2^3f(x)\,dx=\int_2^3\frac{2}{9}x\,dx\left[\frac{1}{9}x^2\right]_2^3=1-\frac{4}{9}=\frac{5}{9}\\
 						P(B|A)=\frac{P(B\cap A)}{P(A)}=\frac{P(A|B)P(B)}{P(A)}=\frac{1\cdot P(B)}{P(A)}=\frac{\frac{5}{9}}{\int_1^3\frac{1}{9}x\,dx}=\frac{5}{8}}
 					Vi ser at $P(B|A)\neq P(B)$, så $A$ og $B$ er ikke uavhengige}
+				\oppgave{Vi vil tilpasse en lineær regresjonsmodell for $Y=$ dager, og $x=$ år, det vil si
+					\maths{Y_i=\beta_0+\beta_1x_i+\epsilon_i,& &i=1,\ldots,48}
+					der vi går ut ifra ar feiledda $\epsilon_1,\ldots,\epsilon_{48}$ er uavhengige og normalfordelte med forventning $0$ og varians $\sigma^2$.\\
+					Regresjonsanalysen er gjennomført i $R$:\\
+					\texttt{summary(lm(y~x))-> (Intercept)=$b_0$, x=$b_1$}\\
+					\texttt{mean(x)=24.5, sum((x-mean(x))\^\space2)=9212}\\
+					\texttt{res=residuals(ln(y~x)), sum(res\^\space2)/(48-2)=150.1756}\\
+					Skriv ned minste kvadrat-estimatoren for $\beta_0, \beta_1$. og finn estimata fra $R$ (ish) utskrifta. Gi ei presis tolkning av hva de estimerte verdiene forteller deg om sammenhengen.\\
+					Bruk den estimerte regresjonslinja til å finne et predikert verdi for dager i år 49}
+				{\maths{B_1=\frac{\sum_{i=1}^n(x_i-\ol x)\cdot Y_i}{\sum_{i=1}^n(x_i-\ol x)^2}, &&B_0=\ol Y-B_1\cdot \ol X}
+					Fra $R$-utskrifta kan vi finne MKM-estimata for $\beta_1,\beta_0$, og den estimerte regresjonslinja:
+					\maths{b_1=-0.411, &&b_0=67.175 &\Rightarrow& \hat y = b_0 + b_1 x=67.175-0.411x}
+					$b_0=$ skjæring med $y$-aksen, estimert forventa dager ved x=0 år.\\
+					$b_1=-0.411$ er stigningstallet, estimert endring i firventa dager ekstra for hvert år.\\
+					Predikert verdi for $x_0=49$ er:
+					\maths{\hat y_0 = b_0 + b_1x_0=67.175-0.411\cdot x=47.036}.}
+				\deloppgave{Vi er spesielt interresert i den totale endringa i antall dager som har skjedd fra $x=1$ til $x=48$. Som estimator for endring i forventa dager i løpet av de $47$ åra skal vi nytte:
+					\maths{\Delta\hat Y=\hat Y_{48} - \hat Y_1}
+					(Her er $\hat Y_i = B_0 + B_1 x$, altså estimert regresjonslinje år $x_i$)\\
+					Vis at $\Delta\hat Y=(48-1)\cdot B_1$, der $B_1$ er estimatoren for stigningstallet.\\
+					Vis at $\Delta\hat Y$ er en forventningsrett estimator for endringa over 47 år, og finn variansen til estimatoren.\\
+					Bruk dette som utgangspunkt til å utlede et $95\%$-konfidensintervall for forventa endring, og estimer intervallet ved hjelp av utskriftene over.\\
+					Kan du utifra dette intervallet påstå signifikant endring i antall dager?}{Differansen i estimert regresjonslinje mellom $xz=48$ og $x=1$:
+					\maths{\Delta\hat Y&= \hat Y_{48}-\hat Y_1 = B_0+B_1\cdot 48-(B_0+B_1\cdot 1)=47 B_1\\
+						E(\Delta\hat Y)&=E(47\cdot B_1)=47\cdot E(B_1)=47\cdot \beta_1\\
+						Vet(\Delta\hat Y)&= Var(47\cdot B_1)=47^2\cdot Var(B_1)=47^2\frac{\sigma^2}{\sum_{i=1}^n(x_i-\ol x)^2}}
+					Her er det vrukt at vi vet at for stigningstallestimatoren er
+					\maths{E(B_1)=\beta_1&&\text{og}&&Var(B_1)=\frac{\sigma^2}{\sum_{i=1}^n(x_i-\ol x)^2}}
+					Merk at forventningsverdien til estimatoren er lik forventa endring over $47$ år da
+					\maths{\Delta\mu_Y=\mu_{Y|48}-\mu_{Y|1}=\beta_0+\beta_1\cdot 48-(\beta_0 + \beta_1 \cdot 1)=47\cdot\beta_1}
+					Da vi vet at estimatoren $B_1$ er normalfordelt vil og $\Delta\hat Y$ bli det, og vi har at
+					\maths{\Delta\hat Y\sim N\left(\Delta\mu_Y,\frac{47\sigma}{\sqrt{\sum_{i=1}{48}(x_i-\ol x)^2}}\right)}
+					Dermed kan vi utlede et $95\%$-KI ved å ta utgangspunkt i en t-fordelt observator
+					\maths{P\left(-t_{0.025}<\frac{\Delta\hat Y-\Delta\mu_Y}{\frac{47\cdot S}{\sqrt{\sum_{i=1}^n(x_i-\ol x)^2}}}<t_{0.025}\right)=0.95\\
+						P\left(\Delta\hat Y-t_{0.025}\frac{47\cdot S}{\sqrt{\sum_{i=1}^n(x_i-\ol x)^2}}<\Delta\mu_Y<\Delta\hat Y+t_{0.025}\frac{47\cdot S}{\sqrt{\sum_{i=1}^n(x_i-\ol x)^2}}\right)=0.95\\}.}
 			\end{block}
 		\end{column}
-		\begin{column}{.66\linewidth}
+		\begin{column}{.33\linewidth}
+			\body{Med $n-2=46$ frihetsgrader (bruker $t_{0.025,40}=2.021$) blir et $95\%$-intervallestimat for $\Delta\mu_Y$:
+				\maths{47b_1\pm t_{0.025,46}\frac{47s}{\sqrt{\sum_{i=1}^48(x_i-\ol x)^2}}\approx 47 \cdot (-0.411)\pm 2.021 \cdot \frac{47\cdot 12.25}{\sqrt{9212}}=(-31.440,-7.193)}
+				Fra $R$: $x=12.25$ og $\sum_{i=1}^{48}(x_i-\ol x)^2=9212$. Alternativt: $\hat{SE}(B_1)=\frac{s}{\sqrt{\sum_{i=1}^n(x_i-\ol x)^2}}$. Det er $95\%$ sannsynlighet for at intervallet skal inneholde forventa endring over $47$ år. Og da intervallet ikke dekker $0$ kan vi påstå med $5\%$ signifikansnivå at det har skjedd ei endring.
+			}
+		\end{column}
+		\begin{column}{.33\linewidth}
 		\end{column}
 	\end{columns}
 \end{frame}{}
