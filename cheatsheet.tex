@@ -440,7 +440,7 @@
 					\textbf{forklaringsgraden} er definert ved
 					\maths{R^2&=\frac{\text{Forklart variasjon}}{\text{Total variasjon}}=\frac{SSR}{SST}=\frac{SST-SSE}{SST}=1-\frac{SSE}{SST}, &0 \leq R^2 \leq 1}
 					Dette er et vanlig mål på hvor stor andel av variasjonen i responsen som kan tilskrives den lineære sammenhengen $\mu_{Y|x}=\beta_0+\beta_1 x$ (Resten tilskrives tilfeldige feil, $\epsilon$)}
-			\begin{block}{Løningsforslag}
+				\begin{block}{Løsningsforslag}
 				\oppgave{Vi anntar at konsentrasjonen i en prøve $Y_i$, av volum $l_i$ liter har følgende fordeling:
 					\maths{Y_i\sim N\left(\mu,\frac{\sigma}{\sqrt l_i}\right)}
 					Nå er det tatt $n=5$ uavhengige prøver av ulik størrelse.\\
@@ -535,8 +535,8 @@
 \end{frame}
 \begin{frame}{}
 	\begin{columns}[t]
-		\begin{column}{.33\linewidth}
-			\begin{block}{Løningsforslag}
+		\begin{column}{.50\linewidth}
+			\begin{block}{Løsningsforslag}
 				\oppgave{Ola samler spillekort.
 					Ønsker et spesifikt spillekort ($A$).
 					$X$ er anntall kort han kjøper før han får dette.
@@ -609,17 +609,17 @@
 					\maths{\Delta\hat Y\sim N\left(\Delta\mu_Y,\frac{47\sigma}{\sqrt{\sum_{i=1}{48}(x_i-\ol x)^2}}\right)}
 					Dermed kan vi utlede et $95\%$-KI ved å ta utgangspunkt i en t-fordelt observator
 					\maths{P\left(-t_{0.025}<\frac{\Delta\hat Y-\Delta\mu_Y}{\frac{47\cdot S}{\sqrt{\sum_{i=1}^n(x_i-\ol x)^2}}}<t_{0.025}\right)=0.95\\
-						P\left(\Delta\hat Y-t_{0.025}\frac{47\cdot S}{\sqrt{\sum_{i=1}^n(x_i-\ol x)^2}}<\Delta\mu_Y<\Delta\hat Y+t_{0.025}\frac{47\cdot S}{\sqrt{\sum_{i=1}^n(x_i-\ol x)^2}}\right)=0.95\\}.}
-			\end{block}
-		\end{column}
-		\begin{column}{.33\linewidth}
-			\body{Med $n-2=46$ frihetsgrader (bruker $t_{0.025,40}=2.021$) blir et $95\%$-intervallestimat for $\Delta\mu_Y$:
+						P\left(\Delta\hat Y-t_{0.025}\frac{47\cdot S}{\sqrt{\sum_{i=1}^n(x_i-\ol x)^2}}<\Delta\mu_Y<\Delta\hat Y+t_{0.025}\frac{47\cdot S}{\sqrt{\sum_{i=1}^n(x_i-\ol x)^2}}\right)=0.95\\}.
+			Med $n-2=46$ frihetsgrader (bruker $t_{0.025,40}=2.021$) blir et $95\%$-intervallestimat for $\Delta\mu_Y$:
 				\maths{47b_1\pm t_{0.025,46}\frac{47s}{\sqrt{\sum_{i=1}^48(x_i-\ol x)^2}}\approx 47 \cdot (-0.411)\pm 2.021 \cdot \frac{47\cdot 12.25}{\sqrt{9212}}=(-31.440,-7.193)}
 				Fra $R$: $x=12.25$ og $\sum_{i=1}^{48}(x_i-\ol x)^2=9212$. Alternativt: $\hat{SE}(B_1)=\frac{s}{\sqrt{\sum_{i=1}^n(x_i-\ol x)^2}}$. Det er $95\%$ sannsynlighet for at intervallet skal inneholde forventa endring over $47$ år. Og da intervallet ikke dekker $0$ kan vi påstå med $5\%$ signifikansnivå at det har skjedd ei endring.
 			}
+			\end{block}
 		\end{column}
-		\begin{column}{.33\linewidth}
+		\begin{column}{.50\linewidth}
 		\end{column}
+		%\begin{column}{.33\linewidth}
+		%\end{column}
 	\end{columns}
 \end{frame}{}
 \end{document}
